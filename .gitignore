@@ -1,0 +1,10 @@
+_generated
+
+# xcode
+xcuserdata
+build
+*.app
+*.a
+
+# macOS
+.DS_Store
