@@ -1,6 +1,8 @@
 ShadowPlay
 ==========
 
+![shadow play alpha 0.1.0](composerpack/doc/app%200.1.0%20alpha.jpeg)
+
 Copyright (c) [Dan Wilcox](danomatika.com) 2021
 
 BSD Simplified License.
@@ -13,6 +15,8 @@ Description
 
 "Shadow Play" is an exploration of architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets. Much like a simple music box plucked by patterns of pins on a rotating wheel, the transitions between light and dark as you ride control playback of prepared sequences, generated patterns, or prepared audio playback speed.
 
+![street building shadows](composerpack/doc/street%20buildings.jpeg)
+
 User Guide
 ----------
 
@@ -20,14 +24,18 @@ _Projection so far based on pre-production work. Will be updated._
 
 1. Open ShadowPlay application
 2. Calibrate:
-  a. Point camera at area of shadow & set brightness min
-  b. Point camera at area of light & set brightness max
+  * Point camera at area of shadow & set brightness min
+  * Point camera at area of light & set brightness max
 3. Place device in bicycle mount with active camera facing up or down
 4. Choose scene & press play
 5. Ride through areas of light and dark to trigger scene audio
 
 Developing
 ----------
+
+### Dependencies
+
+* [libpd](http://github.com/libpd/libpd): included as a git submodule
 
 ### Checkout & Build
 
