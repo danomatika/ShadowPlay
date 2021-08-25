@@ -1,4 +1,4 @@
-#N canvas 407 131 458 602 12;
+#N canvas 725 108 458 602 12;
 #X obj 197 400 osc~;
 #X obj 258 400 phasor~;
 #X obj 258 431 *~ 0.5;
@@ -26,7 +26,7 @@
 #X text 110 147 quantize slightly to smooth;
 #X text 97 405 envelope;
 #X obj 78 60 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7400 1;
+-1 -1 0 1;
 #X obj 197 303 line;
 #X msg 197 276 \$1 100;
 #X connect 0 0 3 0;

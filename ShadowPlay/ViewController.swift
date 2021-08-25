@@ -17,10 +17,16 @@ class ViewController: UIViewController, PdReceiverDelegate,
 
 	let controller = PdAudioController()
 	let patch = PdFile()
+	let qlister = Qlister()
+
+	@IBOutlet weak var controlsView: ControlsView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+
+		controlsView.mainViewController = self
+		qlister.delegate = controlsView
 
 		// set up pure data
 		controller?.allowBluetooth = true
@@ -44,9 +50,12 @@ class ViewController: UIViewController, PdReceiverDelegate,
 		controller?.print()
 		#endif
 		PdBase.setDelegate(self)
-		let pdpath = Bundle.main.bundleURL.appendingPathComponent("pd").path
-		if !patch.open("main.pd", path: pdpath) {
+		PdBase.subscribe("#app")
+		if !patch.open("main.pd", path: AppDelegate.patchDirectoryPath()) {
 			debugPrint("could not open main.pd")
+		}
+		if !qlister.open() {
+			debugPrint("could not open qlister.pd")
 		}
 		controller?.isActive = true
 		PdBase.computeAudio(true)
@@ -113,6 +122,31 @@ class ViewController: UIViewController, PdReceiverDelegate,
 		print(message ?? "")
 	}
 
+	func receiveBang(fromSource source: String!) {
+		receivePrint("received bangfrom source: \(String(describing: source))")
+	}
+
+	func receive(_ received: Float, fromSource source: String!) {
+		receivePrint("received float: \(received) from source: \(String(describing: source))")
+	}
+
+	func receiveSymbol(_ symbol: String!, fromSource source: String!) {
+		receivePrint("received symbol: \(String(describing: symbol)) from source: \(String(describing: source))")
+	}
+
+	func receiveList(_ list: [Any]!, fromSource source: String!) {
+		receivePrint("received list: \(String(describing: list)) from source: \(String(describing: source))")
+	}
+
+	func receiveMessage(_ message: String!, withArguments arguments: [Any]!, fromSource source: String!) {
+		receivePrint("received message: \(String(describing: message)) \(String(describing: arguments)) from source: \(String(describing: source))")
+		if message == "qlister" {
+			DispatchQueue.main.async {
+				self.qlister.receiveMessage(message, withArguments: arguments)
+			}
+		}
+	}
+
 	// MARK: AVCaptureVideoDataOutputSampleBufferDelegate
 
 	// read brightness level from frame EXIF metadata,
@@ -125,7 +159,9 @@ class ViewController: UIViewController, PdReceiverDelegate,
 			//debugPrint("brightness \(brightness.floatValue) normalized \(normalized)")
 			DispatchQueue.main.async {
 				self.brightness = self.brightness.mavg(normalized, windowSize: 2)
-				PdBase.send(self.brightness, toReceiver: "#brightness")
+				if !self.qlister.isPlaying {
+					PdBase.send(self.brightness, toReceiver: "#brightness")
+				}
 				self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
 			}
 		}

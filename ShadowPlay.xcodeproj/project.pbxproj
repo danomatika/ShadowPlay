@@ -18,6 +18,8 @@
 		7E56D74F26D5C98700D69F91 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E56D74E26D5C98700D69F91 /* AVFoundation.framework */; };
 		7E56D75126D5C98D00D69F91 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E56D75026D5C98D00D69F91 /* AudioToolbox.framework */; };
 		7E56D75A26D5D14E00D69F91 /* pd in Resources */ = {isa = PBXBuildFile; fileRef = 7E56D75226D5D07300D69F91 /* pd */; };
+		7E56D75C26D6496D00D69F91 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56D75B26D6496D00D69F91 /* ControlsView.swift */; };
+		7E56D75E26D64F4A00D69F91 /* Qlister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56D75D26D64F4A00D69F91 /* Qlister.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		7E56D74E26D5C98700D69F91 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7E56D75026D5C98D00D69F91 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7E56D75226D5D07300D69F91 /* pd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pd; sourceTree = "<group>"; };
+		7E56D75B26D6496D00D69F91 /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		7E56D75D26D64F4A00D69F91 /* Qlister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qlister.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				7E56D70326D5AC9300D69F91 /* AppDelegate.swift */,
+				7E56D75B26D6496D00D69F91 /* ControlsView.swift */,
+				7E56D75D26D64F4A00D69F91 /* Qlister.swift */,
 				7E56D70526D5AC9300D69F91 /* SceneDelegate.swift */,
 				7E56D70726D5AC9300D69F91 /* ViewController.swift */,
 				7E56D74A26D5C64400D69F91 /* ShadowPlay-Bridging-Header.h */,
@@ -261,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E56D75E26D64F4A00D69F91 /* Qlister.swift in Sources */,
 				7E56D70826D5AC9300D69F91 /* ViewController.swift in Sources */,
 				7E56D70426D5AC9300D69F91 /* AppDelegate.swift in Sources */,
 				7E56D70626D5AC9300D69F91 /* SceneDelegate.swift in Sources */,
+				7E56D75C26D6496D00D69F91 /* ControlsView.swift in Sources */,
 				7E56D71826D5C09900D69F91 /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

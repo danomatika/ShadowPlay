@@ -1,24 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShadowPlay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLL-cK-hcX" customClass="ControlsView" customModule="ShadowPlay" customModuleProvider="target">
+                                <rect key="frame" x="20" y="567" width="335" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JRH-GC-sV1">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQ5-ly-4XF">
+                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="100"/>
+                                                <state key="normal" image="play.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="playPause:" destination="rLL-cK-hcX" eventType="touchUpInside" id="yM3-tR-nBn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWh-Ku-z50">
+                                                <rect key="frame" x="111.5" y="0.0" width="112" height="100"/>
+                                                <state key="normal" image="record.circle.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="record:" destination="rLL-cK-hcX" eventType="touchUpInside" id="FuN-mn-HlQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YN-eL-Obe">
+                                                <rect key="frame" x="223.5" y="0.0" width="111.5" height="100"/>
+                                                <state key="normal" image="doc.fill.badge.plus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="saveWith_sender:" destination="rLL-cK-hcX" eventType="touchUpInside" id="VnR-8Y-1LQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JRH-GC-sV1" firstAttribute="top" secondItem="rLL-cK-hcX" secondAttribute="top" id="YUY-Ax-J3w"/>
+                                    <constraint firstAttribute="trailing" secondItem="JRH-GC-sV1" secondAttribute="trailing" id="YYW-Ma-kRh"/>
+                                    <constraint firstAttribute="bottom" secondItem="JRH-GC-sV1" secondAttribute="bottom" id="d7y-CK-1QZ"/>
+                                    <constraint firstAttribute="height" constant="100" id="hbP-gf-gph"/>
+                                    <constraint firstItem="JRH-GC-sV1" firstAttribute="leading" secondItem="rLL-cK-hcX" secondAttribute="leading" id="rii-vq-9D8"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="playPauseButton" destination="jQ5-ly-4XF" id="MiC-lf-dNS"/>
+                                    <outlet property="recordButton" destination="fWh-Ku-z50" id="kdF-e2-dnG"/>
+                                    <outlet property="saveButton" destination="6YN-eL-Obe" id="0bN-nc-TbC"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rLL-cK-hcX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="74O-gD-XPa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rLL-cK-hcX" secondAttribute="trailing" constant="20" id="q1j-az-O7s"/>
+                            <constraint firstItem="rLL-cK-hcX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uUj-2p-l9T"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="controlsView" destination="rLL-cK-hcX" id="RBq-rj-gwR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53.623188405797109" y="71.651785714285708"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="doc.fill.badge.plus" catalog="system" width="122" height="128"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="record.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
