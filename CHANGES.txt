@@ -1,1 +1,8 @@
-0.1.0: TBD 2021
+0.1.0: 25 Aug 2021
+
+alpha
+
+* added reading basic camera brightness
+* added libpd audio with basic brightness theremin patch
+* added qlist recording, playback, & timestamped file saving
+* added composerpack and recorded test runs
