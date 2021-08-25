@@ -21,6 +21,15 @@ _to be filled in..._
 Developing
 ----------
 
+### Checkout & Build
+
+Clone this repository and checkout it's submodules using git:
+
+    git clone https://github.com/danomatika/ShadowPlay.git
+    git submodule update --init --recursive
+
+Open the Xcode project and Build/Run.
+
 ### Release steps
 
 1. Update version in Xcode project and changelog

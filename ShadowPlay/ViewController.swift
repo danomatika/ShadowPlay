@@ -8,17 +8,50 @@
 import UIKit
 import AVKit
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: UIViewController, PdReceiverDelegate,
+                      AVCaptureVideoDataOutputSampleBufferDelegate {
 
 	let session = AVCaptureSession()
 	var brightness: Float = 0
 	let range: ClosedRange<Float> = -4...4
 
-	// set up capture session, ref: https://stackoverflow.com/q/9856114
+	let controller = PdAudioController()
+	let patch = PdFile()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 
+		// set up pure data
+		controller?.allowBluetooth = true
+		controller?.allowBluetoothA2DP = true
+		controller?.allowAirPlay = true
+		controller?.mixWithOthers = true
+		let sampleRate = Int32(AVAudioSession.sharedInstance().sampleRate)
+		let status = controller?.configurePlayback(withSampleRate: sampleRate,
+		                                          inputChannels: 0,
+		                                          outputChannels: 2,
+		                                          inputEnabled: false)
+		switch(status) {
+			case PdAudioError:
+				print("could not configure audio")
+			case PdAudioPropertyChanged:
+				print("some of the audio properties were changed during configuration")
+			default:
+				debugPrint("audio configuration successful")
+		}
+		#if DEBUG
+		controller?.print()
+		#endif
+		PdBase.setDelegate(self)
+		let pdpath = Bundle.main.bundleURL.appendingPathComponent("pd").path
+		if !patch.open("main.pd", path: pdpath) {
+			debugPrint("could not open main.pd")
+		}
+		controller?.isActive = true
+		PdBase.computeAudio(true)
+
+		// set up capture session, ref: https://stackoverflow.com/q/9856114
 		session.sessionPreset = .high
 		session.automaticallyConfiguresCaptureDeviceForWideColor = false
 
@@ -28,8 +61,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
 		let position = AVCaptureDevice.Position.front
 		guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera,
-												   for: .video,
-												   position: position) else {
+		                                           for: .video,
+		                                           position: position) else {
 			print("could not create camera")
 			return
 		}
@@ -46,14 +79,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 		videoDataOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey) : kCVPixelFormatType_32BGRA]
 		videoDataOutput.alwaysDiscardsLateVideoFrames = true
 		let queue = DispatchQueue.init(label: "cameraQueue",
-									   qos: .userInteractive,
-									   attributes: .concurrent,
-									   autoreleaseFrequency: .inherit,
-									   target: .none)
+		                               qos: .userInteractive,
+		                               attributes: .concurrent,
+		                               autoreleaseFrequency: .inherit,
+		                               target: .none)
 		videoDataOutput.setSampleBufferDelegate(self, queue: queue)
 		session.addOutput(videoDataOutput)
 
-		NotificationCenter.default.addObserver(forName: .AVCaptureSessionRuntimeError, object: self, queue: .main) { Notification in
+		NotificationCenter.default.addObserver(forName: .AVCaptureSessionRuntimeError,
+		                                       object: self, queue: .main) { Notification in
 			print("capture session runtime error")
 		}
 
@@ -73,6 +107,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 		}
 	}
 
+	// MARK: PdReceiverDelegate
+
+	func receivePrint(_ message: String!) {
+		print(message ?? "")
+	}
+
+	// MARK: AVCaptureVideoDataOutputSampleBufferDelegate
+
 	// read brightness level from frame EXIF metadata,
 	// ref: https://stackoverflow.com/a/22836060
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -83,6 +125,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 			//debugPrint("brightness \(brightness.floatValue) normalized \(normalized)")
 			DispatchQueue.main.async {
 				self.brightness = self.brightness.mavg(normalized, windowSize: 2)
+				PdBase.send(self.brightness, toReceiver: "#brightness")
 				self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
 			}
 		}

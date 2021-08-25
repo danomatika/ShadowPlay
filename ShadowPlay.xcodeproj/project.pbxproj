@@ -14,7 +14,49 @@
 		7E56D70D26D5AC9300D69F91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E56D70C26D5AC9300D69F91 /* Assets.xcassets */; };
 		7E56D71026D5AC9300D69F91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E56D70E26D5AC9300D69F91 /* LaunchScreen.storyboard */; };
 		7E56D71826D5C09900D69F91 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56D71726D5C09900D69F91 /* Util.swift */; };
+		7E56D74D26D5C96C00D69F91 /* libpd-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E56D74126D5C56D00D69F91 /* libpd-ios.a */; };
+		7E56D74F26D5C98700D69F91 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E56D74E26D5C98700D69F91 /* AVFoundation.framework */; };
+		7E56D75126D5C98D00D69F91 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E56D75026D5C98D00D69F91 /* AudioToolbox.framework */; };
+		7E56D75A26D5D14E00D69F91 /* pd in Resources */ = {isa = PBXBuildFile; fileRef = 7E56D75226D5D07300D69F91 /* pd */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7E56D74026D5C56D00D69F91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = "libpd-ios";
+		};
+		7E56D74226D5C56D00D69F91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 119013AB1486450C00086F19;
+			remoteInfo = "libpd-osx";
+		};
+		7E56D74426D5C56D00D69F91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 30C3D36D1FAA200100C67F08;
+			remoteInfo = "libpd-ios-multi";
+		};
+		7E56D74626D5C56D00D69F91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 30C3D2FA1FAA1FCC00C67F08;
+			remoteInfo = "libpd-osx-multi";
+		};
+		7E56D74B26D5C96700D69F91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = "libpd-ios";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7E56D70026D5AC9300D69F91 /* ShadowPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShadowPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +68,11 @@
 		7E56D70F26D5AC9300D69F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E56D71126D5AC9300D69F91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E56D71726D5C09900D69F91 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = libs/libpd/libpd.xcodeproj; sourceTree = "<group>"; };
+		7E56D74A26D5C64400D69F91 /* ShadowPlay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShadowPlay-Bridging-Header.h"; sourceTree = "<group>"; };
+		7E56D74E26D5C98700D69F91 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7E56D75026D5C98D00D69F91 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7E56D75226D5D07300D69F91 /* pd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E56D75126D5C98D00D69F91 /* AudioToolbox.framework in Frameworks */,
+				7E56D74F26D5C98700D69F91 /* AVFoundation.framework in Frameworks */,
+				7E56D74D26D5C96C00D69F91 /* libpd-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,8 +92,11 @@
 		7E56D6F726D5AC9300D69F91 = {
 			isa = PBXGroup;
 			children = (
+				7E56D73826D5C56900D69F91 /* libs */,
+				7E56D75226D5D07300D69F91 /* pd */,
 				7E56D70226D5AC9300D69F91 /* ShadowPlay */,
 				7E56D70126D5AC9300D69F91 /* Products */,
+				7E56D74826D5C58600D69F91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +114,7 @@
 				7E56D70326D5AC9300D69F91 /* AppDelegate.swift */,
 				7E56D70526D5AC9300D69F91 /* SceneDelegate.swift */,
 				7E56D70726D5AC9300D69F91 /* ViewController.swift */,
+				7E56D74A26D5C64400D69F91 /* ShadowPlay-Bridging-Header.h */,
 				7E56D71726D5C09900D69F91 /* Util.swift */,
 				7E56D70926D5AC9300D69F91 /* Main.storyboard */,
 				7E56D70C26D5AC9300D69F91 /* Assets.xcassets */,
@@ -68,6 +122,34 @@
 				7E56D71126D5AC9300D69F91 /* Info.plist */,
 			);
 			path = ShadowPlay;
+			sourceTree = "<group>";
+		};
+		7E56D73826D5C56900D69F91 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		7E56D73A26D5C56D00D69F91 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E56D74126D5C56D00D69F91 /* libpd-ios.a */,
+				7E56D74326D5C56D00D69F91 /* libpd-osx.a */,
+				7E56D74526D5C56D00D69F91 /* libpd-ios-multi.a */,
+				7E56D74726D5C56D00D69F91 /* libpd-osx-multi.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7E56D74826D5C58600D69F91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E56D75026D5C98D00D69F91 /* AudioToolbox.framework */,
+				7E56D74E26D5C98700D69F91 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +166,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7E56D74C26D5C96700D69F91 /* PBXTargetDependency */,
 			);
 			name = ShadowPlay;
 			productName = ShadowPlay;
@@ -115,6 +198,12 @@
 			mainGroup = 7E56D6F726D5AC9300D69F91;
 			productRefGroup = 7E56D70126D5AC9300D69F91 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7E56D73A26D5C56D00D69F91 /* Products */;
+					ProjectRef = 7E56D73926D5C56D00D69F91 /* libpd.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				7E56D6FF26D5AC9300D69F91 /* ShadowPlay */,
@@ -122,11 +211,43 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		7E56D74126D5C56D00D69F91 /* libpd-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libpd-ios.a";
+			remoteRef = 7E56D74026D5C56D00D69F91 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7E56D74326D5C56D00D69F91 /* libpd-osx.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libpd-osx.a";
+			remoteRef = 7E56D74226D5C56D00D69F91 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7E56D74526D5C56D00D69F91 /* libpd-ios-multi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libpd-ios-multi.a";
+			remoteRef = 7E56D74426D5C56D00D69F91 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7E56D74726D5C56D00D69F91 /* libpd-osx-multi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libpd-osx-multi.a";
+			remoteRef = 7E56D74626D5C56D00D69F91 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		7E56D6FE26D5AC9300D69F91 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E56D75A26D5D14E00D69F91 /* pd in Resources */,
 				7E56D71026D5AC9300D69F91 /* LaunchScreen.storyboard in Resources */,
 				7E56D70D26D5AC9300D69F91 /* Assets.xcassets in Resources */,
 				7E56D70B26D5AC9300D69F91 /* Main.storyboard in Resources */,
@@ -148,6 +269,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7E56D74C26D5C96700D69F91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libpd-ios";
+			targetProxy = 7E56D74B26D5C96700D69F91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7E56D70926D5AC9300D69F91 /* Main.storyboard */ = {
@@ -220,13 +349,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "libs/libpd/**";
 			};
 			name = Debug;
 		};
@@ -275,12 +405,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				USER_HEADER_SEARCH_PATHS = "libs/libpd/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -301,6 +432,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danomatika.ShadowPlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/ShadowPlay/ShadowPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -322,6 +454,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danomatika.ShadowPlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/ShadowPlay/ShadowPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
