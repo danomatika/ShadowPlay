@@ -11,12 +11,20 @@ WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 Description
 -----------
 
-_nothing yet_
+"Shadow Play" is an exploration of architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets. Much like a simple music box plucked by patterns of pins on a rotating wheel, the transitions between light and dark as you ride control playback of prepared sequences, generated patterns, or prepared audio playback speed.
 
 User Guide
 ----------
 
-_to be filled in..._
+_Projection so far based on pre-production work. Will be updated._
+
+1. Open ShadowPlay application
+2. Calibrate:
+  a. Point camera at area of shadow & set brightness min
+  b. Point camera at area of light & set brightness max
+3. Place device in bicycle mount with active camera facing up or down
+4. Choose scene & press play
+5. Ride through areas of light and dark to trigger scene audio
 
 Developing
 ----------
@@ -41,3 +49,5 @@ Acknowledgments
 ---------------
 
 Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe. / Unterstützt durch die UNESCO City of Media Arts Karlsruhe sowie durch die Stadt Karlsruhe.
+
+![KA UNESCO COMA logo](media/logo_karlsruhe-unesco_rgb.svg)
