@@ -154,15 +154,15 @@ class ViewController: UIViewController, PdReceiverDelegate,
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 		let metadata = sampleBuffer.attachments.propagated
 		if let exif = metadata[String(kCGImagePropertyExifDictionary)] as? [String: Any],
-		   let brightness = exif[String(kCGImagePropertyExifBrightnessValue)] as? NSNumber {
-			let normalized = brightness.floatValue.clamped(to: range).mapped(from: range, to: 0...1)
-			//debugPrint("brightness \(brightness.floatValue) normalized \(normalized)")
+		   let rawbrightness = exif[String(kCGImagePropertyExifBrightnessValue)] as? NSNumber {
+			let brightness = rawbrightness.floatValue.clamped(to: range).mapped(from: range, to: 0...1)
+			//debugPrint("brightness \(brightness) raw \(rawbrightness.floatValue)")
 			DispatchQueue.main.async {
-				self.brightness = self.brightness.mavg(normalized, windowSize: 2)
+				self.brightness = self.brightness.mavg(brightness, windowSize: 2)
 				if !self.qlister.isPlaying {
-					PdBase.send(self.brightness, toReceiver: "#brightness")
+					PdBase.sendList([self.brightness, rawbrightness.floatValue], toReceiver: "#brightness")
+					self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
 				}
-				self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
 			}
 		}
 	}
