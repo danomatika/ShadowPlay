@@ -1,0 +1,13 @@
+#N canvas 82 76 450 300 12;
+#X obj 60 29 r #brightness;
+#X obj 60 66 unpack;
+#X floatatom 60 140 6 0 0 0 norm - -;
+#X floatatom 99 106 6 0 0 0 raw - -;
+#X text 114 139 0 - 1;
+#X text 154 105 EXIF -16 - 16?;
+#X text 175 28 input: brightness values;
+#X obj 62 225 dac~;
+#X text 112 225 output: stereo;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;

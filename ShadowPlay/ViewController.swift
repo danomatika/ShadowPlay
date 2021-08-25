@@ -13,19 +13,26 @@ class ViewController: UIViewController, PdReceiverDelegate,
 
 	let session = AVCaptureSession()
 	var brightness: Float = 0
-	let range: ClosedRange<Float> = -4...4
+	//var range: ClosedRange<Float> = -4...4 // indoor
+	var range: ClosedRange<Float> = 6...11 // outdoor
+	let rawrange: ClosedRange<Float> = -16...16
 
 	let controller = PdAudioController()
 	let patch = PdFile()
 	let qlister = Qlister()
 
 	@IBOutlet weak var controlsView: ControlsView!
+	@IBOutlet weak var brightnessLabel: UILabel!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 
+		UIApplication.shared.isIdleTimerDisabled = true
+
 		controlsView.mainViewController = self
+		controlsView.rangeMinSlider.value = range.lowerBound.mapped(from:rawrange, to: 0...1)
+		controlsView.rangeMaxSlider.value = range.upperBound.mapped(from: rawrange, to: 0...1)
 		qlister.delegate = controlsView
 
 		// set up pure data
@@ -51,7 +58,8 @@ class ViewController: UIViewController, PdReceiverDelegate,
 		#endif
 		PdBase.setDelegate(self)
 		PdBase.subscribe("#app")
-		if !patch.open("main.pd", path: AppDelegate.patchDirectoryPath()) {
+		let path = AppDelegate.patchDirectory().appendingPathComponent("theremin").path
+		if !patch.open("main.pd", path: path) {
 			debugPrint("could not open main.pd")
 		}
 		if !qlister.open() {
@@ -68,7 +76,7 @@ class ViewController: UIViewController, PdReceiverDelegate,
 //		previewLayer.frame = view.bounds
 //		view.layer.addSublayer(previewLayer)
 
-		let position = AVCaptureDevice.Position.front
+		let position = AVCaptureDevice.Position.back
 		guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera,
 		                                           for: .video,
 		                                           position: position) else {
@@ -162,6 +170,8 @@ class ViewController: UIViewController, PdReceiverDelegate,
 				if !self.qlister.isPlaying {
 					PdBase.sendList([self.brightness, rawbrightness.floatValue], toReceiver: "#brightness")
 					self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
+					self.brightnessLabel.text = String(format: "brightness: %.2f\nraw: %.2f\nrange: %.2f - %.2f",
+													   brightness, rawbrightness.floatValue, self.range.lowerBound, self.range.upperBound)
 				}
 			}
 		}

@@ -21,7 +21,7 @@ class Qlister {
 	private let patch = PdFile()
 
 	func open() -> Bool {
-		return patch.open("qlister.pd", path: AppDelegate.patchDirectoryPath())
+		return patch.open("qlister.pd", path: AppDelegate.patchDirectory().path)
 	}
 
 	func togglePlay() {

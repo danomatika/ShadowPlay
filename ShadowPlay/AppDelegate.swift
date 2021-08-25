@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	// MARK: Util
 
-	/// returns full path to app resources pd directory
-	static func patchDirectoryPath() -> String {
-		return Bundle.main.bundleURL.appendingPathComponent("pd").path
+	/// returns full url to app resources pd directory
+	static func patchDirectory() -> URL {
+		return Bundle.main.bundleURL.appendingPathComponent("pd")
 	}
 
 }

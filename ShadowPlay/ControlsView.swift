@@ -13,6 +13,9 @@ class ControlsView : UIView, QlisterDelegate {
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
 
+	@IBOutlet weak var rangeMinSlider: UISlider!
+	@IBOutlet weak var rangeMaxSlider: UISlider!
+
 	weak var mainViewController: ViewController?
 
 	@IBAction func playPause(_ sender: Any) {
@@ -30,6 +33,22 @@ class ControlsView : UIView, QlisterDelegate {
 		printDebug("ControlsView: saving \(file)")
 		let url = URL.documents.appendingPathComponent(file)
 		mainViewController?.qlister.write(url)
+	}
+
+	@IBAction func rangeMinChanged(_ sender: Any) {
+		guard let mainViewController = mainViewController else {return}
+		let value = rangeMinSlider.value.mapped(from: 0...1, to: mainViewController.rawrange)
+		if value < mainViewController.range.upperBound {
+			mainViewController.range = value...mainViewController.range.upperBound
+		}
+	}
+
+	@IBAction func rangeMaxChanged(_ sender: Any) {
+		guard let mainViewController = mainViewController else {return}
+		let value = rangeMaxSlider.value.mapped(from: 0...1, to: mainViewController.rawrange)
+		if value > mainViewController.range.lowerBound {
+			mainViewController.range = mainViewController.range.lowerBound...value
+		}
 	}
 
 	// MARK: QlisterDelegate
