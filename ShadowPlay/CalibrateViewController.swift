@@ -20,6 +20,7 @@ class CalibrateViewController: UIViewController {
 			labelContainer.isHidden = newValue
 		}
 	}
+	let patch = PdFile()
 
 	weak var mainViewController: MainViewController? // required!
 
@@ -55,28 +56,42 @@ class CalibrateViewController: UIViewController {
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
+		mainViewController?.muteScene()
 		mainViewController?.calibrateViewController = self
+		let path = AppDelegate.patchDirectory().appendingPathComponent("calibrate").path
+		patch.open("main.pd", path: path)
+		PdBase.sendList(["on", 1], toReceiver: "#calibrate")
 	}
 
 	override func viewDidDisappear(_ animated: Bool) {
 		cancelCalibration()
+		PdBase.sendList(["on", 0], toReceiver: "#calibrate")
+		Thread.sleep(forTimeInterval: 0.05) // let fade finish before closing
+		self.patch.close()
 		mainViewController?.calibrateViewController = nil
+		mainViewController?.unmuteScene()
 	}
 
-	func update() {
+	func update(raw: Float) {
 		if isCalibrating {
-			if mainViewController!.rawBrightness < rangeMin {
-				rangeMin = mainViewController!.rawBrightness
+			if raw < rangeMin {
+				rangeMin = raw
 			}
-			if mainViewController!.rawBrightness > rangeMax {
-				rangeMax = mainViewController!.rawBrightness
+			if raw > rangeMax {
+				rangeMax = raw
 			}
 		}
+
+		let range = rangeMin...rangeMax
+		let brightness = raw.clamped(to: range).mapped(from: range, to: 0...1)
+		PdBase.send(brightness, toReceiver: "#calibrate")
+		//debugPrint("calibrate min \(rangeMin) max \(rangeMax) brightness \(brightness)")
+
 		rangeBarView.min = rangeMin.mapped(from: mainViewController!.rawRange, to: 0...1)
 		rangeBarView.max = rangeMax.mapped(from: mainViewController!.rawRange, to: 0...1)
-		rangeBarView.value = mainViewController!.rawBrightness.mapped(from: mainViewController!.rawRange, to: 0...1)
+		rangeBarView.value = raw.mapped(from: mainViewController!.rawRange, to: 0...1)
 		if !valuesHidden {
-			rawBrightnessLabel.text = String(format: "%.2f", mainViewController!.rawBrightness)
+			rawBrightnessLabel.text = String(format: "%.2f", raw)
 			rangeMinLabel.text = String(format: "%.2f", rangeMin)
 			rangeMaxLabel.text = String(format: "%.2f", rangeMax)
 		}

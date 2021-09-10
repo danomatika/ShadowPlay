@@ -142,8 +142,8 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 	func openScene(_ name: String) -> Bool {
 		let path = AppDelegate.patchDirectory().appendingPathComponent(name).path
 		if patch.isValid() {
-			PdBase.sendList([0, 5], toReceiver: "#volume") // fade out to avoid clicks
-			Thread.sleep(forTimeInterval: 0.05) // left fade finish before closing
+			muteScene()
+			Thread.sleep(forTimeInterval: 0.05) // let fade finish before closing
 			self.patch.close()
 		}
 		if !patch.open("main.pd", path: path) {
@@ -160,6 +160,14 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 			return false
 		}
 		return true
+	}
+
+	func muteScene() {
+		PdBase.sendList([0, 5], toReceiver: "#volume") // fade out to avoid clicks
+	}
+
+	func unmuteScene() {
+		PdBase.sendList([1, 5], toReceiver: "#volume") // fade in to avoid clicks
 	}
 
 	// MARK: Actions
@@ -248,7 +256,7 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 					PdBase.sendList([self.brightness, rawBrightness.floatValue], toReceiver: "#brightness")
 					self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
 				}
-				self.calibrateViewController?.update()
+				self.calibrateViewController?.update(raw: rawBrightness.floatValue)
 			}
 		}
 	}
