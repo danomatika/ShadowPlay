@@ -2,13 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>showCalibrationValues</key>
-	<false/>
-	<key>keepAwake</key>
-	<true/>
 	<key>rangeMin</key>
 	<integer>6</integer>
 	<key>rangeMax</key>
 	<integer>11</integer>
+	<key>keepAwake</key>
+	<true/>
+	<key>showCalibrationValues</key>
+	<false/>
+	<key>showRecordControls</key>
+	<false/>
 </dict>
 </plist>

@@ -15,6 +15,7 @@ class SettingsViewController: UITableViewController {
 	// display
 	@IBOutlet weak var keepAwakeSwitch: UISwitch!
 	@IBOutlet weak var showCalibrationValuesSwitch: UISwitch!
+	@IBOutlet weak var showRecordControlsSwitch: UISwitch!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -25,6 +26,7 @@ class SettingsViewController: UITableViewController {
 		let defaults = UserDefaults.standard
 		keepAwakeSwitch.isOn = defaults.bool(forKey: "keepAwake")
 		showCalibrationValuesSwitch.isOn = defaults.bool(forKey: "showCalibrationValues")
+		showRecordControlsSwitch.isOn = defaults.bool(forKey: "showRecordControls")
 	}
 
 	// MARK: Actions
@@ -35,11 +37,16 @@ class SettingsViewController: UITableViewController {
 
 	@IBAction func keepAwakeChanged(_ sender: Any) {
 		UserDefaults.standard.set(keepAwakeSwitch.isOn, forKey: "keepAwake")
-		UIApplication.shared.isIdleTimerDisabled = self.keepAwakeSwitch.isOn
+		UIApplication.shared.isIdleTimerDisabled = keepAwakeSwitch.isOn
 	}
 
 	@IBAction func showCalibrationValuesChanged(_ sender: Any) {
 		UserDefaults.standard.set(showCalibrationValuesSwitch.isOn, forKey: "showCalibrationValues")
+	}
+
+	@IBAction func showRecordControlsChanged(_ sender: Any) {
+		UserDefaults.standard.set(showRecordControlsSwitch.isOn, forKey: "showRecordControls")
+		mainViewController?.controlsView.recordControlsHidden = !showRecordControlsSwitch.isOn
 	}
 
 }

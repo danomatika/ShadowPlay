@@ -30,18 +30,18 @@
                                                     <action selector="swapCamera:" destination="rLL-cK-hcX" eventType="touchUpInside" id="KUg-I7-MLW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQ5-ly-4XF">
-                                                <rect key="frame" x="84" y="0.0" width="83.5" height="100"/>
-                                                <state key="normal" image="play.fill" catalog="system"/>
-                                                <connections>
-                                                    <action selector="playPause:" destination="rLL-cK-hcX" eventType="touchUpInside" id="yM3-tR-nBn"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWh-Ku-z50">
-                                                <rect key="frame" x="167.5" y="0.0" width="84" height="100"/>
+                                                <rect key="frame" x="84" y="0.0" width="83.5" height="100"/>
                                                 <state key="normal" image="record.circle.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="record:" destination="rLL-cK-hcX" eventType="touchUpInside" id="FuN-mn-HlQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQ5-ly-4XF">
+                                                <rect key="frame" x="167.5" y="0.0" width="84" height="100"/>
+                                                <state key="normal" image="play.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="playPause:" destination="rLL-cK-hcX" eventType="touchUpInside" id="yM3-tR-nBn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YN-eL-Obe">
@@ -294,6 +294,42 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lEp-DW-hDP">
+                                        <rect key="frame" x="0.0" y="111.83333587646484" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lEp-DW-hDP" id="Qo5-nt-Ynu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show record controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEI-Vq-HLF" userLabel="Show calibration values">
+                                                    <rect key="frame" x="16" y="11" width="286" height="18.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="ead-AV-Ijm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k7d-rp-1N3">
+                                                    <rect key="frame" x="310" y="6" width="51" height="32"/>
+                                                    <connections>
+                                                        <action selector="showCalibrationValuesChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="GKB-Ih-2ul"/>
+                                                        <action selector="showRecordControlsChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="Teh-CT-86W"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GEI-Vq-HLF" firstAttribute="leading" secondItem="Qo5-nt-Ynu" secondAttribute="leadingMargin" id="KAR-bK-ajJ"/>
+                                                <constraint firstItem="k7d-rp-1N3" firstAttribute="leading" secondItem="GEI-Vq-HLF" secondAttribute="trailing" constant="8" symbolic="YES" id="T7p-dv-KWB"/>
+                                                <constraint firstItem="k7d-rp-1N3" firstAttribute="trailing" secondItem="Qo5-nt-Ynu" secondAttribute="trailingMargin" id="TOv-Ee-xZ4"/>
+                                                <constraint firstItem="GEI-Vq-HLF" firstAttribute="top" secondItem="Qo5-nt-Ynu" secondAttribute="topMargin" id="eHc-yB-uvf"/>
+                                                <constraint firstItem="k7d-rp-1N3" firstAttribute="top" secondItem="Qo5-nt-Ynu" secondAttribute="topMargin" constant="-5" id="fBy-xN-mZW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GEI-Vq-HLF" secondAttribute="bottom" constant="3.6666679382324219" id="iKj-Sc-YEo"/>
+                                                <constraint firstItem="k7d-rp-1N3" firstAttribute="centerY" secondItem="Qo5-nt-Ynu" secondAttribute="centerY" id="iY8-Dp-zV1"/>
+                                                <constraint firstItem="GEI-Vq-HLF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qo5-nt-Ynu" secondAttribute="leadingMargin" id="yNs-g6-alW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -312,6 +348,7 @@
                     <connections>
                         <outlet property="keepAwakeSwitch" destination="U6I-1J-EZM" id="jQD-ge-cVw"/>
                         <outlet property="showCalibrationValuesSwitch" destination="Shc-lU-Hmn" id="Dtf-xo-6gz"/>
+                        <outlet property="showRecordControlsSwitch" destination="k7d-rp-1N3" id="u1O-mc-JbR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDr-Oc-eGE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

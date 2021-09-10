@@ -9,12 +9,30 @@ import UIKit
 
 class ControlsView : UIView, QlisterDelegate {
 
+	var recordControlsHidden: Bool {
+		get {
+			return recordButton.isHidden
+		}
+		set {
+			playPauseButton.isHidden = newValue
+			recordButton.isHidden = newValue
+			saveButton.isHidden = newValue
+		}
+	}
+
 	@IBOutlet weak var swapCameraButton: UIButton!
 	@IBOutlet weak var playPauseButton: UIButton!
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
 
 	weak var mainViewController: MainViewController?
+
+	override func awakeFromNib() {
+		let defaults = UserDefaults.standard
+		recordControlsHidden = !defaults.bool(forKey: "showRecordControls")
+	}
+
+	// MARK: Actions
 
 	@IBAction func swapCamera(_ sender: Any) {
 		printDebug("ControlsView: swapCamera")
