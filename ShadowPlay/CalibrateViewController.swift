@@ -46,7 +46,7 @@ class CalibrateViewController: UIViewController {
 		rangeMin = mainViewController!.range.lowerBound
 		rangeMax = mainViewController!.range.upperBound
 
-		//labelContainer.isHidden = true
+		valuesHidden = !UserDefaults.standard.bool(forKey: "showCalibrationValues")
 
 		calibrateButton.tintColor = .systemBackground
 		calibrateButton.backgroundColor = .systemGreen
@@ -59,6 +59,7 @@ class CalibrateViewController: UIViewController {
 	}
 
 	override func viewDidDisappear(_ animated: Bool) {
+		cancelCalibration()
 		mainViewController?.calibrateViewController = nil
 	}
 
@@ -120,7 +121,6 @@ class CalibrateViewController: UIViewController {
 	// MARK: Actions
 
 	@IBAction func done(_ sender: Any) {
-		cancelCalibration()
 		dismiss(animated: true, completion: nil)
 	}
 

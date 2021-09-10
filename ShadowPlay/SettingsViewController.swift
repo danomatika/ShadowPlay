@@ -14,15 +14,17 @@ class SettingsViewController: UITableViewController {
 
 	// display
 	@IBOutlet weak var keepAwakeSwitch: UISwitch!
-	@IBOutlet weak var showClaibrationValuesSwitch: UISwitch!
+	@IBOutlet weak var showCalibrationValuesSwitch: UISwitch!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 
+		tableView.tableFooterView = UIView(frame: .zero) // no empty rows
+
 		let defaults = UserDefaults.standard
 		keepAwakeSwitch.isOn = defaults.bool(forKey: "keepAwake")
-		//showCalibrationValuesSwitch.isOn = defaults.bool(forKey: "showCalibrationValues")
+		showCalibrationValuesSwitch.isOn = defaults.bool(forKey: "showCalibrationValues")
 	}
 
 	// MARK: Actions
@@ -37,7 +39,7 @@ class SettingsViewController: UITableViewController {
 	}
 
 	@IBAction func showCalibrationValuesChanged(_ sender: Any) {
-		//UserDefaults.standard.set(keepAwakeSwitch.isOn, forKey: "showCalibrationValues")
+		UserDefaults.standard.set(showCalibrationValuesSwitch.isOn, forKey: "showCalibrationValues")
 	}
 
 }

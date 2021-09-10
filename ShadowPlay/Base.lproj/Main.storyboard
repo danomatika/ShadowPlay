@@ -235,7 +235,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U6I-1J-EZM">
                                                     <rect key="frame" x="310" y="6" width="51" height="32"/>
                                                     <connections>
-                                                        <action selector="keepAwakeChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="1td-IM-93A"/>
+                                                        <action selector="keepAwakeChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="fsw-Oj-dAc"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -270,7 +270,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Shc-lU-Hmn">
                                                     <rect key="frame" x="310" y="6" width="51" height="32"/>
                                                     <connections>
-                                                        <action selector="showCalibrationValuesChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="XjY-C8-Q0g"/>
+                                                        <action selector="showCalibrationValuesChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="O9e-be-mZN"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -302,8 +302,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="keepAwakeSwitch" destination="U6I-1J-EZM" id="9d4-a3-aGA"/>
-                        <outlet property="showClaibrationValuesSwitch" destination="Shc-lU-Hmn" id="gHx-bk-hje"/>
+                        <outlet property="keepAwakeSwitch" destination="U6I-1J-EZM" id="jQD-ge-cVw"/>
+                        <outlet property="showCalibrationValuesSwitch" destination="Shc-lU-Hmn" id="Dtf-xo-6gz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDr-Oc-eGE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -388,7 +388,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="k0H-d6-zt9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
-                                        <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
@@ -521,9 +521,6 @@
         <image name="record.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
