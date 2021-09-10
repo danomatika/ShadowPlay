@@ -23,22 +23,29 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JRH-GC-sV1">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="082-4l-n6v">
+                                                <rect key="frame" x="0.0" y="0.0" width="84" height="100"/>
+                                                <state key="normal" image="camera.rotate.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="swapCamera:" destination="rLL-cK-hcX" eventType="touchUpInside" id="KUg-I7-MLW"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQ5-ly-4XF">
-                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="100"/>
+                                                <rect key="frame" x="84" y="0.0" width="83.5" height="100"/>
                                                 <state key="normal" image="play.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="playPause:" destination="rLL-cK-hcX" eventType="touchUpInside" id="yM3-tR-nBn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWh-Ku-z50">
-                                                <rect key="frame" x="111.5" y="0.0" width="112" height="100"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="84" height="100"/>
                                                 <state key="normal" image="record.circle.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="record:" destination="rLL-cK-hcX" eventType="touchUpInside" id="FuN-mn-HlQ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YN-eL-Obe">
-                                                <rect key="frame" x="223.5" y="0.0" width="111.5" height="100"/>
+                                                <rect key="frame" x="251.5" y="0.0" width="83.5" height="100"/>
                                                 <state key="normal" image="doc.fill.badge.plus" catalog="system"/>
                                                 <connections>
                                                     <action selector="saveWith_sender:" destination="rLL-cK-hcX" eventType="touchUpInside" id="VnR-8Y-1LQ"/>
@@ -60,6 +67,7 @@
                                     <outlet property="playPauseButton" destination="jQ5-ly-4XF" id="MiC-lf-dNS"/>
                                     <outlet property="recordButton" destination="fWh-Ku-z50" id="kdF-e2-dnG"/>
                                     <outlet property="saveButton" destination="6YN-eL-Obe" id="0bN-nc-TbC"/>
+                                    <outlet property="swapCameraButton" destination="082-4l-n6v" id="C4h-6z-5vU"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJA-V6-U7v">
@@ -513,6 +521,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.rotate.fill" catalog="system" width="128" height="94"/>
         <image name="doc.fill.badge.plus" catalog="system" width="122" height="128"/>
         <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <image name="music.note" catalog="system" width="97" height="128"/>

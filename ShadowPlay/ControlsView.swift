@@ -9,11 +9,22 @@ import UIKit
 
 class ControlsView : UIView, QlisterDelegate {
 
+	@IBOutlet weak var swapCameraButton: UIButton!
 	@IBOutlet weak var playPauseButton: UIButton!
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
 
 	weak var mainViewController: MainViewController?
+
+	@IBAction func swapCamera(_ sender: Any) {
+		printDebug("ControlsView: swapCamera")
+		if(mainViewController!.camera?.position == .front) {
+			let _ = mainViewController!.setupCamera(position: .back)
+		}
+		else {
+			let _ = mainViewController!.setupCamera(position: .front)
+		}
+	}
 
 	@IBAction func playPause(_ sender: Any) {
 		printDebug("ControlsView: playPause")

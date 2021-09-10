@@ -10,6 +10,7 @@ import AVKit
 
 class MainViewController: UIViewController, PdReceiverDelegate,
                       AVCaptureVideoDataOutputSampleBufferDelegate {
+	var camera: AVCaptureDevice?
 
 	let session = AVCaptureSession()
 	var brightness: Float = 0
@@ -73,21 +74,7 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		session.sessionPreset = .high
 		session.automaticallyConfiguresCaptureDeviceForWideColor = false
 
-		let position = AVCaptureDevice.Position.back
-		guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera,
-		                                           for: .video,
-		                                           position: position) else {
-			print("could not create camera")
-			return
-		}
-		do {
-			let input = try AVCaptureDeviceInput(device: camera)
-			session.addInput(input)
-		}
-		catch {
-			print("could create device input: \(error)")
-			return
-		}
+		let _ = setupCamera(position: .back)
 
 		let videoDataOutput = AVCaptureVideoDataOutput()
 		videoDataOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey) : kCVPixelFormatType_32BGRA]
@@ -106,19 +93,6 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		}
 
 		session.startRunning()
-
-		do {
-			try camera.lockForConfiguration()
-			camera.whiteBalanceMode = .continuousAutoWhiteBalance
-			camera.exposureMode = .continuousAutoExposure
-			if camera.isFocusModeSupported(.continuousAutoFocus) {
-				camera.focusMode = .continuousAutoFocus
-			}
-			camera.unlockForConfiguration()
-		}
-		catch {
-			print("camera configuration failed: \(error)")
-		}
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -168,6 +142,46 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 
 	func unmuteScene() {
 		PdBase.sendList([1, 5], toReceiver: "#volume") // fade in to avoid clicks
+	}
+
+	func setupCamera(position: AVCaptureDevice.Position) -> Bool {
+		let wasRunning = session.isRunning
+		session.stopRunning()
+		for input in session.inputs {
+			session.removeInput(input)
+		}
+		camera = AVCaptureDevice.default(.builtInWideAngleCamera,
+		                                 for: .video,
+		                                 position: position)
+		guard let camera = camera else {
+			print("could not create camera")
+			return false
+		}
+		do {
+			let input = try AVCaptureDeviceInput(device: camera)
+			session.addInput(input)
+		}
+		catch {
+			print("could create device input: \(error)")
+			return false
+		}
+		do {
+			try camera.lockForConfiguration()
+			camera.whiteBalanceMode = .continuousAutoWhiteBalance
+			camera.exposureMode = .continuousAutoExposure
+			if camera.isFocusModeSupported(.continuousAutoFocus) {
+				camera.focusMode = .continuousAutoFocus
+			}
+			camera.unlockForConfiguration()
+		}
+		catch {
+			print("camera configuration failed: \(error)")
+			return false
+		}
+		if wasRunning {
+			session.startRunning()
+		}
+		return true
 	}
 
 	// MARK: Actions
