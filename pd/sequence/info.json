@@ -1,5 +1,5 @@
 {
-	"name" : "Scene Template",
-	"author" : "Jane Doe",
-	"description" : "An empty page to be filled."
+	"name" : "Sequence",
+	"author" : "Dan Wilcox",
+	"description" : "Trigger notes in a sequence with transitions of brightness."
 }

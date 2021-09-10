@@ -8,10 +8,21 @@
 
 import UIKit
 
+struct Scene {
+	let url: URL
+	let meta: SceneMeta
+}
+
+struct SceneMeta : Codable {
+	let name: String
+	let author: String
+	let description: String
+}
+
 /// sound scenes list
 class ScenesViewController: UITableViewController {
 
-	let data: [String] = ["theremin", "sequence"]
+	var scenes: [Scene] = []
 
 	weak var mainViewController: MainViewController? // required!
 
@@ -22,6 +33,37 @@ class ScenesViewController: UITableViewController {
 		// Do any additional setup after loading the view.
 
 		tableView.tableFooterView = UIView(frame: .zero) // no empty rows
+
+		// load scenes from patch directory
+		let manager = FileManager.default
+		var contents: [URL] = []
+		do {
+			try contents = manager.contentsOfDirectory(at: AppDelegate.patchDirectory(),
+			                                           includingPropertiesForKeys: nil,
+			                                           options: [.skipsHiddenFiles])
+		}
+		catch {
+			print("ScenesViewController: could not read patch directory: \(error)")
+		}
+		for url in contents {
+			if url.hasDirectoryPath {
+				let name = url.lastPathComponent
+				if name == "calibrate" {continue}
+				let main = url.appendingPathComponent("main.pd")
+				let info = url.appendingPathComponent("info.json")
+				if manager.fileExists(atPath: main.path) && manager.fileExists(atPath: info.path) {
+					do {
+						let data = try Data(contentsOf: info)
+						let meta = try JSONDecoder().decode(SceneMeta.self, from: data)
+						let scene = Scene(url: url, meta: meta)
+						scenes.append(scene)
+					}
+					catch {
+						print("ScenesViewController: could not parse info.json: \(error)")
+					}
+				}
+			}
+		}
 	}
 
 	// MARK: Actions
@@ -34,20 +76,23 @@ class ScenesViewController: UITableViewController {
 
 	// table length
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return data.count
+		return scenes.count
 	}
 
 	// create cells from playlist files
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "SceneCell", for: indexPath)
-		cell.textLabel?.text = data[indexPath.row]
+		let scene = scenes[indexPath.row]
+		cell.textLabel?.text = scene.meta.name
+		cell.detailTextLabel?.text = scene.meta.author
 		return cell
 	}
 
 	/// open scene on selection
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		debugPrint("ScenesViewController: selected \(data[indexPath.row])")
-		let _ = mainViewController!.openScene(data[indexPath.row])
+		debugPrint("ScenesViewController: selected \(scenes[indexPath.row])")
+		let scene = scenes[indexPath.row]
+		let _ = mainViewController!.openScene(scene.url.lastPathComponent)
 		dismiss(animated: true, completion: nil)
 	}
 
