@@ -1,0 +1,15 @@
+/* 
+  Localized.strings
+  ShadowPlay
+
+  Created by Dan Wilcox on 9/6/21.
+  
+*/
+
+"Alert.OpenScene.title" = "Audio Error";
+"Alert.OpenScene.message" = "Could not open scene %@";
+
+"Alert.QlisterSave.title" = "Qlister";
+"Alert.QlisterSave.message" = "Saving %@";
+
+"Ok" = "Ok";

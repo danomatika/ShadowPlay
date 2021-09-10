@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  ShadowPlay
 //
 //  Created by Dan Wilcox on 8/25/21.
@@ -8,32 +8,36 @@
 import UIKit
 import AVKit
 
-class ViewController: UIViewController, PdReceiverDelegate,
+class MainViewController: UIViewController, PdReceiverDelegate,
                       AVCaptureVideoDataOutputSampleBufferDelegate {
 
 	let session = AVCaptureSession()
 	var brightness: Float = 0
-	//var range: ClosedRange<Float> = -4...4 // indoor
-	var range: ClosedRange<Float> = 6...11 // outdoor
-	let rawrange: ClosedRange<Float> = -16...16
+	var rawBrightness: Float = 0
+	var range: ClosedRange<Float> = 6...11 // default outdoor
+	let rawRange: ClosedRange<Float> = -16...16
 
 	let controller = PdAudioController()
 	let patch = PdFile()
 	let qlister = Qlister()
 
+	weak var calibrateViewController: CalibrateViewController?
+
 	@IBOutlet weak var controlsView: ControlsView!
-	@IBOutlet weak var brightnessLabel: UILabel!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 
-		UIApplication.shared.isIdleTimerDisabled = true
-
 		controlsView.mainViewController = self
-		controlsView.rangeMinSlider.value = range.lowerBound.mapped(from:rawrange, to: 0...1)
-		controlsView.rangeMaxSlider.value = range.upperBound.mapped(from: rawrange, to: 0...1)
 		qlister.delegate = controlsView
+		//controlsView.isHidden = true
+
+		let defaults = UserDefaults.standard
+		range = defaults.float(forKey: "rangeMin")...defaults.float(forKey: "rangeMax")
+		if defaults.bool(forKey: "keepAwake") {
+			UIApplication.shared.isIdleTimerDisabled = true // keep screen awake
+		}
 
 		// set up pure data
 		controller?.allowBluetooth = true
@@ -58,10 +62,7 @@ class ViewController: UIViewController, PdReceiverDelegate,
 		#endif
 		PdBase.setDelegate(self)
 		PdBase.subscribe("#app")
-		let path = AppDelegate.patchDirectory().appendingPathComponent("theremin").path
-		if !patch.open("main.pd", path: path) {
-			debugPrint("could not open main.pd")
-		}
+		let _ = openScene("theremin")
 		if !qlister.open() {
 			debugPrint("could not open qlister.pd")
 		}
@@ -71,10 +72,6 @@ class ViewController: UIViewController, PdReceiverDelegate,
 		// set up capture session, ref: https://stackoverflow.com/q/9856114
 		session.sessionPreset = .high
 		session.automaticallyConfiguresCaptureDeviceForWideColor = false
-
-//		let previewLayer = AVCaptureVideoPreviewLayer.init(session: session)
-//		previewLayer.frame = view.bounds
-//		view.layer.addSublayer(previewLayer)
 
 		let position = AVCaptureDevice.Position.back
 		guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera,
@@ -124,6 +121,85 @@ class ViewController: UIViewController, PdReceiverDelegate,
 		}
 	}
 
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowScenes",
+		   let scene = segue.destination as? UINavigationController,
+		   let controller = scene.viewControllers.first as? ScenesViewController  {
+			controller.mainViewController = self
+		}
+		else if segue.identifier == "ShowCalibrate",
+		   let scene = segue.destination as? UINavigationController,
+		   let controller = scene.viewControllers.first as? CalibrateViewController  {
+			controller.mainViewController = self
+		}
+		else if segue.identifier == "ShowSettings",
+		   let scene = segue.destination as? UINavigationController,
+		   let controller = scene.viewControllers.first as? SettingsViewController  {
+			controller.mainViewController = self
+		}
+	}
+
+	func openScene(_ name: String) -> Bool {
+		let path = AppDelegate.patchDirectory().appendingPathComponent(name).path
+		if patch.isValid() {
+			PdBase.sendList([0, 5], toReceiver: "#volume") // fade out to avoid clicks
+			Thread.sleep(forTimeInterval: 0.05) // left fade finish before closing
+			self.patch.close()
+		}
+		if !patch.open("main.pd", path: path) {
+			debugPrint("could not open \(name) main.pd")
+			// FIXME: show alert after 2 seconds to avoid UI transitions/animations
+			let alert = UIAlertController(title: NSLocalizedString("Alert.OpenScene.title", comment: "Audio Error"),
+										  message: String(format: NSLocalizedString("Alert.OpenScene.message", comment: "Could not open scene %@"), name),
+										  preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
+			alert.modalPresentationStyle = .overCurrentContext
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+				self.present(alert, animated: true, completion: nil)
+			}
+			return false
+		}
+		return true
+	}
+
+	// MARK: Actions
+
+	/// show more actions
+	@IBAction func showMoreActions(_ sender: Any) {
+		printDebug("ViewController: showMoreActions")
+		let alert = UIAlertController()
+		let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel action"), style: .cancel, handler: { action in
+			alert.dismiss(animated: true, completion: nil)
+		})
+		let calibrateAction = UIAlertAction(title: NSLocalizedString("Calibrate", comment: "Calibrate action"), style: .default, handler: { action in
+			printDebug("show calibrate")
+			alert.dismiss(animated: true, completion: nil)
+			self.performSegue(withIdentifier: "ShowCalibrate", sender: self)
+		})
+		let infoAction = UIAlertAction(title: NSLocalizedString("Info", comment: "Info action"), style: .default, handler: { action in
+			printDebug("show info")
+			alert.dismiss(animated: true, completion: nil)
+			self.performSegue(withIdentifier: "ShowInfo", sender: self)
+		})
+		let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: "Settings action"), style: .default, handler: { action in
+			printDebug("show settings")
+			self.performSegue(withIdentifier: "ShowSettings", sender: self)
+			alert.dismiss(animated: true, completion: nil)
+		})
+		if #available(iOS 13.0, *) {
+			// add system icons on iOS 13+
+			calibrateAction.setValue(UIImage.init(systemName: "lightbulb"), forKey: "image")
+			infoAction.setValue(UIImage.init(systemName: "info.circle"), forKey: "image")
+			settingsAction.setValue(UIImage.init(systemName: "gear"), forKey: "image")
+		}
+		alert.addAction(cancelAction)
+		alert.addAction(calibrateAction)
+		alert.addAction(infoAction)
+		alert.addAction(settingsAction)
+		alert.modalPresentationStyle = .popover
+		present(alert, animated: true, completion: nil)
+	}
+
 	// MARK: PdReceiverDelegate
 
 	func receivePrint(_ message: String!) {
@@ -162,17 +238,17 @@ class ViewController: UIViewController, PdReceiverDelegate,
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 		let metadata = sampleBuffer.attachments.propagated
 		if let exif = metadata[String(kCGImagePropertyExifDictionary)] as? [String: Any],
-		   let rawbrightness = exif[String(kCGImagePropertyExifBrightnessValue)] as? NSNumber {
-			let brightness = rawbrightness.floatValue.clamped(to: range).mapped(from: range, to: 0...1)
-			//debugPrint("brightness \(brightness) raw \(rawbrightness.floatValue)")
+		   let rawBrightness = exif[String(kCGImagePropertyExifBrightnessValue)] as? NSNumber {
+			let brightness = rawBrightness.floatValue.clamped(to: range).mapped(from: range, to: 0...1)
+			//debugPrint("brightness \(brightness) raw \(rawBrightness.floatValue)")
 			DispatchQueue.main.async {
+				self.rawBrightness = rawBrightness.floatValue
 				self.brightness = self.brightness.mavg(brightness, windowSize: 2)
 				if !self.qlister.isPlaying {
-					PdBase.sendList([self.brightness, rawbrightness.floatValue], toReceiver: "#brightness")
+					PdBase.sendList([self.brightness, rawBrightness.floatValue], toReceiver: "#brightness")
 					self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
-					self.brightnessLabel.text = String(format: "brightness: %.2f\nraw: %.2f\nrange: %.2f - %.2f",
-													   brightness, rawbrightness.floatValue, self.range.lowerBound, self.range.upperBound)
 				}
+				self.calibrateViewController?.update()
 			}
 		}
 	}

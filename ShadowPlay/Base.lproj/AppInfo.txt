@@ -1,0 +1,14 @@
+ShadowPlay is...
+
+http://danomatika.com/code/shadowplay
+
+Version 1.1.0
+
+Dan Wilcox 2021
+danomatika.com
+
+Usage
+
+1.
+2.
+3.

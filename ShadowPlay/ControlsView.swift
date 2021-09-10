@@ -13,10 +13,7 @@ class ControlsView : UIView, QlisterDelegate {
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
 
-	@IBOutlet weak var rangeMinSlider: UISlider!
-	@IBOutlet weak var rangeMaxSlider: UISlider!
-
-	weak var mainViewController: ViewController?
+	weak var mainViewController: MainViewController?
 
 	@IBAction func playPause(_ sender: Any) {
 		printDebug("ControlsView: playPause")
@@ -33,21 +30,16 @@ class ControlsView : UIView, QlisterDelegate {
 		printDebug("ControlsView: saving \(file)")
 		let url = URL.documents.appendingPathComponent(file)
 		mainViewController?.qlister.write(url)
-	}
-
-	@IBAction func rangeMinChanged(_ sender: Any) {
-		guard let mainViewController = mainViewController else {return}
-		let value = rangeMinSlider.value.mapped(from: 0...1, to: mainViewController.rawrange)
-		if value < mainViewController.range.upperBound {
-			mainViewController.range = value...mainViewController.range.upperBound
-		}
-	}
-
-	@IBAction func rangeMaxChanged(_ sender: Any) {
-		guard let mainViewController = mainViewController else {return}
-		let value = rangeMaxSlider.value.mapped(from: 0...1, to: mainViewController.rawrange)
-		if value > mainViewController.range.lowerBound {
-			mainViewController.range = mainViewController.range.lowerBound...value
+		let alert = UIAlertController(
+			title: NSLocalizedString("Alert.QlisterSave.title",
+									 comment: "Qlister"),
+			message: String(format: NSLocalizedString("Alert.QlisterSave.message",
+									 comment: "Saving %@"), file),
+			preferredStyle: .alert
+		)
+		mainViewController?.show(alert, sender: nil)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+			alert.dismiss(animated: true, completion: nil)
 		}
 	}
 
