@@ -1,0 +1,29 @@
+#N canvas 266 25 441 438 12;
+#X obj 40 166 random 100;
+#X obj 40 140 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 40 209 5 0 0 0 - - -;
+#X obj 40 328 ./bucket 12;
+#X obj 40 372 print;
+#X msg 195 267 clear;
+#X msg 114 209 4;
+#X msg 162 209 8;
+#X msg 208 209 16;
+#X text 256 268 clear to 0 list;
+#X text 253 208 set length & clear;
+#X text 159 328 args: length;
+#X obj 40 111 metro 500;
+#X obj 40 85 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 37 27 builds a list by prepending new values \, ala "passing
+the bucket" \, until the desired length is reached, f 52;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 3 1;
+#X connect 6 0 3 1;
+#X connect 7 0 3 1;
+#X connect 8 0 3 1;
+#X connect 12 0 1 0;
+#X connect 13 0 12 0;

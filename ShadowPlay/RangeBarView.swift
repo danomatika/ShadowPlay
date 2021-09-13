@@ -37,7 +37,7 @@ class RangeBarView : UIView {
 
 	override func awakeFromNib() {
 
-		// clear backgroud used in Interface Builder
+		// clear temp backgroud used in Interface Builder
 		backgroundColor = UIColor.clear
 
 		// horz gradient

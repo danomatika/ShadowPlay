@@ -10,14 +10,13 @@ Basic info and test data for creating a Pure Data "scene" for the ShadowPlay iOS
 User Perspective
 ----------------
 
-(Projection so far based on pre-production work.)
-
-1. Open ShadowPlay application
-2. Calibrate:
-  a. Point camera at area of shadow & set brightness min
-  b. Point camera at area of light & set brightness max
-3. Place device in bicycle mount with active camera facing up or down
-4. Choose scene & press play
+1. Place device in bicycle mount with active camera uncovered (either front or rear)
+2. Open ShadowPlay application
+3. Calibrate:
+  a. Open calibration interface & press Start button
+  b. Roll bike over both light and dark areas along the route you wish to sonify
+  c. Press Stop button when finished
+4. Choose scene
 5. Ride through areas of light and dark to trigger scene audio
 
 Scene Format

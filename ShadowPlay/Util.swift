@@ -30,6 +30,15 @@ extension URL {
 
 }
 
+extension StringProtocol {
+
+	/// access individual characters via []: let char = string[2]
+	subscript(offset: Int) -> Character {
+		self[index(startIndex, offsetBy: offset)]
+	}
+
+}
+
 extension String {
 
 	/// returns a timestamp string for the current date & time

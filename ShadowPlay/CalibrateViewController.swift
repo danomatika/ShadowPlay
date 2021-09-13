@@ -58,7 +58,7 @@ class CalibrateViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		mainViewController?.muteScene()
 		mainViewController?.calibrateViewController = self
-		let path = AppDelegate.patchDirectory().appendingPathComponent("calibrate").path
+		let path = AppDelegate.patchDirectory().appendingPathComponent("_calibrate").path
 		patch.open("main.pd", path: path)
 		PdBase.sendList(["on", 1], toReceiver: "#calibrate")
 	}
@@ -66,7 +66,7 @@ class CalibrateViewController: UIViewController {
 	override func viewDidDisappear(_ animated: Bool) {
 		cancelCalibration()
 		PdBase.sendList(["on", 0], toReceiver: "#calibrate")
-		Thread.sleep(forTimeInterval: 0.05) // let fade finish before closing
+		Thread.sleep(forTimeInterval: 0.025) // let fade finish before closing
 		self.patch.close()
 		mainViewController?.calibrateViewController = nil
 		mainViewController?.unmuteScene()
@@ -85,7 +85,7 @@ class CalibrateViewController: UIViewController {
 		let range = rangeMin...rangeMax
 		let brightness = raw.clamped(to: range).mapped(from: range, to: 0...1)
 		PdBase.send(brightness, toReceiver: "#calibrate")
-		//debugPrint("calibrate min \(rangeMin) max \(rangeMax) brightness \(brightness)")
+		//printDebug("calibrate min \(rangeMin) max \(rangeMax) brightness \(brightness)")
 
 		rangeBarView.min = rangeMin.mapped(from: mainViewController!.rawRange, to: 0...1)
 		rangeBarView.max = rangeMax.mapped(from: mainViewController!.rawRange, to: 0...1)
@@ -108,7 +108,7 @@ class CalibrateViewController: UIViewController {
 															target: self,
 															action: #selector(done))
 		navigationItem.rightBarButtonItem?.style = .done
-		debugPrint("CalibrateViewController: start")
+		printDebug("CalibrateViewController: start")
 	}
 
 	func stopCalibration() {
@@ -123,14 +123,14 @@ class CalibrateViewController: UIViewController {
 															target: self,
 															action: #selector(done))
 		navigationItem.rightBarButtonItem?.style = .done
-		debugPrint("CalibrateViewController: stop, range \(rangeMin) \(rangeMax)")
+		printDebug("CalibrateViewController: stop, range \(rangeMin) \(rangeMax)")
 	}
 
 	func cancelCalibration() {
 		if !isCalibrating {return}
 		isCalibrating = false
 		calibrateButton.setTitle("Start", for: .normal)
-		debugPrint("CalibrateViewController: cancel")
+		printDebug("CalibrateViewController: cancel")
 	}
 
 	// MARK: Actions

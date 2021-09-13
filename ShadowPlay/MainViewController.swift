@@ -56,7 +56,7 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 			case PdAudioPropertyChanged:
 				print("some of the audio properties were changed during configuration")
 			default:
-				debugPrint("audio configuration successful")
+				printDebug("audio configuration successful")
 		}
 		#if DEBUG
 		controller?.print()
@@ -65,7 +65,7 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		PdBase.subscribe("#app")
 		let _ = openScene("theremin")
 		if !qlister.open() {
-			debugPrint("could not open qlister.pd")
+			printDebug("could not open qlister.pd")
 		}
 		controller?.isActive = true
 		PdBase.computeAudio(true)
@@ -117,11 +117,11 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		let path = AppDelegate.patchDirectory().appendingPathComponent(name).path
 		if patch.isValid() {
 			muteScene()
-			Thread.sleep(forTimeInterval: 0.05) // let fade finish before closing
+			Thread.sleep(forTimeInterval: 0.025) // let fade finish before closing
 			self.patch.close()
 		}
 		if !patch.open("main.pd", path: path) {
-			debugPrint("could not open \(name) main.pd")
+			printDebug("could not open \(name) main.pd")
 			// FIXME: show alert after 2 seconds to avoid UI transitions/animations
 			let alert = UIAlertController(title: NSLocalizedString("Alert.OpenScene.title", comment: "Audio Error"),
 										  message: String(format: NSLocalizedString("Alert.OpenScene.message", comment: "Could not open scene %@"), name),
@@ -137,11 +137,11 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 	}
 
 	func muteScene() {
-		PdBase.sendList([0, 5], toReceiver: "#volume") // fade out to avoid clicks
+		PdBase.sendList([0, 25], toReceiver: "#volume") // fade out to avoid clicks
 	}
 
 	func unmuteScene() {
-		PdBase.sendList([1, 5], toReceiver: "#volume") // fade in to avoid clicks
+		PdBase.sendList([1, 25], toReceiver: "#volume") // fade in to avoid clicks
 	}
 
 	func setupCamera(position: AVCaptureDevice.Position) -> Bool {
@@ -262,7 +262,7 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		if let exif = metadata[String(kCGImagePropertyExifDictionary)] as? [String: Any],
 		   let rawBrightness = exif[String(kCGImagePropertyExifBrightnessValue)] as? NSNumber {
 			let brightness = rawBrightness.floatValue.clamped(to: range).mapped(from: range, to: 0...1)
-			//debugPrint("brightness \(brightness) raw \(rawBrightness.floatValue)")
+			//printDebug("brightness \(brightness) raw \(rawBrightness.floatValue)")
 			DispatchQueue.main.async {
 				self.rawBrightness = rawBrightness.floatValue
 				self.brightness = self.brightness.mavg(brightness, windowSize: 2)

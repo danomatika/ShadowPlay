@@ -1,5 +1,6 @@
 {
 	"name" : "Scene Template",
 	"author" : "Jane Doe",
-	"description" : "An empty page to be filled."
+	"description" : "An empty page to be filled.",
+	"url" : "http://janedoe.cc"
 }

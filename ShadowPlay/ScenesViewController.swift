@@ -48,7 +48,7 @@ class ScenesViewController: UITableViewController {
 		for url in contents {
 			if url.hasDirectoryPath {
 				let name = url.lastPathComponent
-				if name == "calibrate" {continue}
+				if name.count == 0 || name[0] == "_" {continue} // skip dirs starting with _
 				let main = url.appendingPathComponent("main.pd")
 				let info = url.appendingPathComponent("info.json")
 				if manager.fileExists(atPath: main.path) && manager.fileExists(atPath: info.path) {
@@ -90,8 +90,8 @@ class ScenesViewController: UITableViewController {
 
 	/// open scene on selection
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		debugPrint("ScenesViewController: selected \(scenes[indexPath.row])")
 		let scene = scenes[indexPath.row]
+		printDebug("ScenesViewController: selected \(scene.meta.name)")
 		let _ = mainViewController!.openScene(scene.url.lastPathComponent)
 		dismiss(animated: true, completion: nil)
 	}

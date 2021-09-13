@@ -20,14 +20,13 @@ Description
 User Guide
 ----------
 
-_Projection so far based on pre-production work. Will be updated._
-
-1. Open ShadowPlay application
-2. Calibrate:
-  * Point camera at area of shadow & set brightness min
-  * Point camera at area of light & set brightness max
-3. Place device in bicycle mount with active camera facing up or down
-4. Choose scene & press play
+1. Place device in bicycle mount with active camera uncovered (either front or rear)
+2. Open ShadowPlay application
+3. Calibrate:
+  a. Open calibration interface & press Start button
+  b. Roll bike over both light and dark areas along the route you wish to sonify
+  c. Press Stop button when finished
+4. Choose scene
 5. Ride through areas of light and dark to trigger scene audio
 
 Developing
@@ -59,3 +58,8 @@ Acknowledgments
 Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe. / Unterstützt durch die UNESCO City of Media Arts Karlsruhe sowie durch die Stadt Karlsruhe.
 
 ![KA UNESCO COMA logo](media/logo_karlsruhe-unesco_rgb.svg)
+
+Sound scene contributions by:
+
+* Sofy Yuditskaya (New York, USA) <https://www.yuditskaya.com>
+* Damian Stewart (Vienna, AT) <http://damianstewart.com>
