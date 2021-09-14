@@ -65,7 +65,7 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		PdBase.subscribe("#app")
 		let _ = openScene("theremin")
 		if !qlister.open() {
-			printDebug("could not open qlister.pd")
+			print("could not open qlister.pd")
 		}
 		controller?.isActive = true
 		PdBase.computeAudio(true)

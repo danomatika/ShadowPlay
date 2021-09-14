@@ -6,10 +6,28 @@
   
 */
 
+// actions
+
+"Ok" = "Ok";
+
+"Cancel" = "Cancel";
+
+"Calibrate" = "Calibrate";
+
+"Info" = "Info";
+
+"Settings" = "Settings";
+
+// alerts
+
 "Alert.OpenScene.title" = "Audio Error";
 "Alert.OpenScene.message" = "Could not open scene %@";
 
 "Alert.QlisterSave.title" = "Qlister";
 "Alert.QlisterSave.message" = "Saving %@";
 
-"Ok" = "Ok";
+// buttons
+
+"Start" = "Start";
+
+"Stop" = "Stop";

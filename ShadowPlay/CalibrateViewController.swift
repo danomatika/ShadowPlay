@@ -102,7 +102,7 @@ class CalibrateViewController: UIViewController {
 		rangeMin = mainViewController!.rawRange.upperBound
 		rangeMax = mainViewController!.rawRange.lowerBound
 		isCalibrating = true
-		calibrateButton.setTitle("Stop", for: .normal)
+		calibrateButton.setTitle(NSLocalizedString("Stop", comment: "Start button"), for: .normal)
 		calibrateButton.backgroundColor = .systemRed
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
 															target: self,
@@ -117,7 +117,7 @@ class CalibrateViewController: UIViewController {
 		mainViewController!.range = rangeMin...rangeMax
 		UserDefaults.standard.setValue(rangeMin, forKey: "rangeMin")
 		UserDefaults.standard.setValue(rangeMax, forKey: "rangeMax")
-		calibrateButton.setTitle("Start", for: .normal)
+		calibrateButton.setTitle(NSLocalizedString("Start", comment: "Start button"), for: .normal)
 		calibrateButton.backgroundColor = .systemGreen
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
 															target: self,
@@ -129,7 +129,7 @@ class CalibrateViewController: UIViewController {
 	func cancelCalibration() {
 		if !isCalibrating {return}
 		isCalibrating = false
-		calibrateButton.setTitle("Start", for: .normal)
+		calibrateButton.setTitle(NSLocalizedString("Start", comment: "Start button"), for: .normal)
 		printDebug("CalibrateViewController: cancel")
 	}
 
