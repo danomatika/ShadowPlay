@@ -7,7 +7,7 @@
 #X text 155 105 EXIF -16 - 16?;
 #X text 178 28 input: brightness values;
 #X obj 138 239 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 6465 1;
 #X obj 61 19 r #brightness;
 #N canvas 804 43 987 933 noisesource 0;
 #X obj 80 533 *~;
@@ -20,11 +20,11 @@
 #X obj 211 515 loadbang;
 #X msg 206 555 200 100;
 #X obj 267 356 vsl 15 128 100 20000 1 0 empty empty empty 0 -9 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 10618 1;
 #X obj 265 222 d-1-;
 #X obj 252 743 d-biquadcalc-lowpass 4000 200;
 #X obj 303 377 vsl 15 128 100 20000 1 0 empty empty empty 0 -9 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 7295 1;
 #X obj 306 516 t f f;
 #X obj 297 577 pack f f;
 #X obj 147 342 noise~;
@@ -33,7 +33,7 @@
 #X obj 268 317 f;
 #X obj 256 75 t f f;
 #X obj 743 195 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 11372 1;
 #X obj 619 511 *~;
 #X obj 740 451 d-smooth~;
 #X obj 136 388 *~;
@@ -46,7 +46,7 @@
 #X obj 740 354 * 0.3;
 #X obj 744 322 d-sq;
 #X obj 801 349 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 6295 1;
 #X obj 647 286 d-1-;
 #N canvas 8 43 1134 994 oscs 0;
 #X obj 736 703 osc~ 101;
@@ -373,7 +373,7 @@
 #X obj 87 873 *~;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
-#X connect 0 1 18 0;
+#X connect 1 0 15 0;
 #X connect 6 0 8 0;
 #X connect 7 0 0 0;
 #X connect 8 0 9 0;
