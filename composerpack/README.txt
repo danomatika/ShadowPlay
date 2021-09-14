@@ -13,10 +13,10 @@ User Perspective
 1. Place device in bicycle mount with active camera uncovered (either front or rear)
 2. Open ShadowPlay application
 3. Calibrate:
-  a. Open calibration interface & press Start button
+  a. Open ... -> Calibrate interface & press Start button
   b. Roll bike over both light and dark areas along the route you wish to sonify
   c. Press Stop button when finished
-4. Choose scene
+4. Choose audio scene in Scenes table
 5. Ride through areas of light and dark to trigger scene audio
 
 Scene Format
@@ -44,3 +44,12 @@ Test Data
 ---------
 
 Sample test data is available as qlist text files. The `qlister-play.pd` patch is provided for sample playback to the #brightness receiver.
+
+Acknowledgements
+----------------
+
+Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe.
+
+https://www.cityofmediaarts.de/
+
+Scene contributions by Sofy Yuditskaya and Damian Stewart.

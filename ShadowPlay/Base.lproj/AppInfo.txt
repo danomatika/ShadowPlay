@@ -1,14 +1,31 @@
-ShadowPlay is...
+ShadowPlay is an exploration of the architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets. Much like a simple music box plucked by patterns of pins on a rotating wheel, the transitions between light and dark as you ride control playback of prepared sequences, generated patterns, or prepared audio playback speed.
 
 http://danomatika.com/code/shadowplay
 
-Version 1.1.0
+Version 1.0.0
 
 Dan Wilcox 2021
 danomatika.com
 
 Usage
 
-1.
-2.
-3.
+1. Place device in bicycle mount with active camera uncovered (either front or rear)
+2. Open ShadowPlay application
+3. Calibrate:
+  a. Open ... -> Calibrate interface & press Start button
+  b. Roll bike over both light and dark areas along the route you wish to sonify
+  c. Press Stop button when finished
+4. Choose audio scene in Scenes table
+5. Ride through areas of light and dark to trigger scene audio
+
+Making Your Own Scenes
+
+_Info to be added._
+
+Acknowledgements
+
+Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe.
+
+https://www.cityofmediaarts.de/
+
+Scene contributions by Sofy Yuditskaya and Damian Stewart.
