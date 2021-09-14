@@ -48,7 +48,9 @@ You can develop your own scenes using the open source Pure Data computer music e
 
 Additionally, a qlist recorder is included in ShadowPlay to allow for recording brightness events along a route for playback on your desktop computer during composition (see Qlist Record Controls).
 
-For details and a composer pack with a qlist player and scene template, see http://danomatika.com/code/shadowplay
+For details and a composer pack with a qlist player and scene template, see:
+
+http://danomatika.com/code/shadowplay
 
 Acknowledgements
 ----------------
