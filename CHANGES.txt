@@ -1,3 +1,32 @@
+0.2.0: 14 Sep 2021
+
+beta
+
+* added paged tutorial with project overview and usage info, shown at first
+  launch or via ? button on info view
+* added calibration view with
+  - automatic range finding: start, look around, stop (suggested by Ben Miller)
+  - mutes currently selected scene
+  - opens specific pd calibration scene
+* added front/read camera swap button
+* added 25 ms audio fade on scene transition and app background transition
+* added sequence scene
+* added scene contributions by Sofy Yuditskaya and Damian Stewart
+* added use defaults handling and settings to:
+  - keep screen awake
+  - show calibration values
+  - show qlist record controls
+* added url key to scene info.json handling
+* added qlister save confirmation alert
+
+* scene selection now works and list built from file system & info.json metadata
+* main view buttons now larger for easier pressing
+* cleaned up sequence main.pd and fixed stuck notes
+* updated basic app info text
+* updated theremin scene to use band limited triangle
+* updated camera usage description
+* app is now portrait only
+
 0.1.0: 25 Aug 2021
 
 alpha
