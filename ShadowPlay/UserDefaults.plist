@@ -12,5 +12,7 @@
 	<false/>
 	<key>showRecordControls</key>
 	<false/>
+	<key>showTutorialOnLaunch</key>
+	<true/>
 </dict>
 </plist>

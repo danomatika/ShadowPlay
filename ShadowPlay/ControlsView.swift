@@ -20,7 +20,6 @@ class ControlsView : UIView, QlisterDelegate {
 		}
 	}
 
-	@IBOutlet weak var swapCameraButton: UIButton!
 	@IBOutlet weak var playPauseButton: UIButton!
 	@IBOutlet weak var recordButton: UIButton!
 	@IBOutlet weak var saveButton: UIButton!
@@ -34,16 +33,6 @@ class ControlsView : UIView, QlisterDelegate {
 
 	// MARK: Actions
 
-	@IBAction func swapCamera(_ sender: Any) {
-		printDebug("ControlsView: swapCamera")
-		if(mainViewController!.camera?.position == .front) {
-			let _ = mainViewController!.setupCamera(position: .back)
-		}
-		else {
-			let _ = mainViewController!.setupCamera(position: .front)
-		}
-	}
-
 	@IBAction func playPause(_ sender: Any) {
 		printDebug("ControlsView: playPause")
 		mainViewController?.qlister.togglePlay()
@@ -54,7 +43,7 @@ class ControlsView : UIView, QlisterDelegate {
 		mainViewController?.qlister.toggleRecord()
 	}
 
-	@IBAction func save(_sender: Any) {
+	@IBAction func save(_ sender: Any) {
 		let file = String.timestamp() + ".txt"
 		printDebug("ControlsView: saving \(file)")
 		let url = URL.documents.appendingPathComponent(file)

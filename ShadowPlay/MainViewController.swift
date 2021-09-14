@@ -95,6 +95,15 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		session.startRunning()
 	}
 
+	// show tutorial on first launch
+	override func viewDidAppear(_ animated: Bool) {
+		let defaults = UserDefaults.standard
+		if defaults.bool(forKey: "showTutorialOnLaunch") {
+			self.performSegue(withIdentifier: "ShowTutorial", sender: self)
+			defaults.set(false, forKey: "showTutorialOnLaunch")
+		}
+	}
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowScenes",
 		   let scene = segue.destination as? UINavigationController,
@@ -104,6 +113,11 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		else if segue.identifier == "ShowCalibrate",
 		   let scene = segue.destination as? UINavigationController,
 		   let controller = scene.viewControllers.first as? CalibrateViewController  {
+			controller.mainViewController = self
+		}
+		else if segue.identifier == "ShowInfo",
+		   let scene = segue.destination as? UINavigationController,
+		   let controller = scene.viewControllers.first as? InfoViewController  {
 			controller.mainViewController = self
 		}
 		else if segue.identifier == "ShowSettings",

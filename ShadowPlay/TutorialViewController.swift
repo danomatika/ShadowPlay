@@ -8,13 +8,15 @@
 
 import UIKit
 
-/// usage tutorial presented as a series of "Tutorial#" pages in the storyboard
+/// usage tutorial presented as a series of 0-indexed "Tutorial#" pages in the storyboard
 class TutorialViewController: UIPageViewController,
 							  UIPageViewControllerDelegate,
 							  UIPageViewControllerDataSource {
 
 	var pages: [UIViewController] = []
 	var index: Int = 0
+
+	static let numPages = 8
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,8 +25,9 @@ class TutorialViewController: UIPageViewController,
 		self.delegate = self
 		self.dataSource = self
 
-		for(i) in 1...2 {
-			let page: UIViewController! = storyboard?.instantiateViewController(identifier: String(format: "Tutorial%d", i))
+		for(i) in 0..<TutorialViewController.numPages {
+			let id =  String(format: "Tutorial%d", i)
+			let page: UIViewController! = storyboard?.instantiateViewController(identifier: id)
 			pages.append(page)
 		}
 
@@ -39,6 +42,10 @@ class TutorialViewController: UIPageViewController,
 
 	// MARK: UIPageViewControllerDelegate
 
+	func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+		navigationItem.title = pendingViewControllers[0].title
+	}
+
 	func presentationIndex(for pageViewController: UIPageViewController) -> Int {
 		return pages.firstIndex(of: viewControllers![0])!
 	}
@@ -49,16 +56,20 @@ class TutorialViewController: UIPageViewController,
 
 	// MARK: UIPageViewControllerDataSource
 
+	/// go to previous page, stop at beginning
 	func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-		let currentIndex = pages.firstIndex(of: viewController)!
-		let previousIndex = abs((currentIndex - 1) % pages.count)
-		return pages[previousIndex]
+		let index = pages.firstIndex(of: viewController)!
+		if index == 0 {return nil}
+		let newIndex = abs((index - 1) % pages.count)
+		return pages[newIndex]
 	}
 
+	/// go to next page, stop at end
 	func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-		let currentIndex = pages.firstIndex(of: viewController)!
-		let nextIndex = abs((currentIndex + 1) % pages.count)
-		return pages[nextIndex]
+		let index = pages.firstIndex(of: viewController)!
+		if index == pages.count - 1 {return nil}
+		let newIndex = abs((index + 1) % pages.count)
+		return pages[newIndex]
 	}
 
 }

@@ -148,4 +148,13 @@ class CalibrateViewController: UIViewController {
 		}
 	}
 
+	@IBAction func swapCamera(_ sender: Any) {
+		if(mainViewController!.camera?.position == .front) {
+			let _ = mainViewController!.setupCamera(position: .back)
+		}
+		else {
+			let _ = mainViewController!.setupCamera(position: .front)
+		}
+	}
+
 }

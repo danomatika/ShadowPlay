@@ -13,6 +13,8 @@ class InfoViewController: UIViewController {
 
 	@IBOutlet weak var textView: UITextView!
 
+	weak var mainViewController: MainViewController? // required!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -35,5 +37,11 @@ class InfoViewController: UIViewController {
 		dismiss(animated: true, completion: nil)
 	}
 
-}
+	@IBAction func showTutorial(_ sender: Any) {
+		dismiss(animated: true) {
+			self.mainViewController?.performSegue(withIdentifier: "ShowTutorial", sender: self)
+		}
 
+	}
+
+}
