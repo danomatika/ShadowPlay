@@ -1,0 +1,33 @@
+/* 
+  Localized.strings
+  ShadowPlay
+
+  Created by Dan Wilcox on 9/6/21.
+  
+*/
+
+// actions
+
+"Ok" = "Ok";
+
+"Cancel" = "Abbrechen";
+
+"Calibrate" = "Kalibrieren";
+
+"Info" = "Infos";
+
+"Settings" = "Einstellungen";
+
+// alerts
+
+"Alert.OpenScene.title" = "Audio Fehler";
+"Alert.OpenScene.message" = "Szene %@ konnte nicht geöffnet werden.";
+
+"Alert.QlisterSave.title" = "Qlister";
+"Alert.QlisterSave.message" = "Speichern von %@";
+
+// buttons
+
+"Start" = "Start";
+
+"Stop" = "Stopp";

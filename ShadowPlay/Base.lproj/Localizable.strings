@@ -21,7 +21,7 @@
 // alerts
 
 "Alert.OpenScene.title" = "Audio Error";
-"Alert.OpenScene.message" = "Could not open scene %@";
+"Alert.OpenScene.message" = "Could not open scene %@.";
 
 "Alert.QlisterSave.title" = "Qlister";
 "Alert.QlisterSave.message" = "Saving %@";

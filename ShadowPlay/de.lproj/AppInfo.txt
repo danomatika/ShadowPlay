@@ -1,0 +1,62 @@
+ShadowPlay ist eine Erkundung der Architektur und des Lichts in Außenbereichen durch Klang. Mit einem am Fahrrad montierten Sensor und einem in den Himmel gerichteten Smartphone werden die gesprenkelten Licht- und Schattenmuster zur Musik und man fährt durch die Straßen seiner Stadt.
+
+http://danomatika.com/code/shadowplay
+
+Version 1.0.0
+
+Dan Wilcox 2021
+danomatika.com
+
+Grundlegende Verwendung
+-----------------------
+
+1. Platziere das Gerät in der Fahrradhalterung ohne die aktive Kamera zu verdecken (entweder vorne oder hinten)
+2. Öffne die ShadowPlay-Anwendung
+3. Kalibrieren sie:
+  a. Öffne ... -> Kalibrieren
+  b. Drücke die Schaltfläche Start
+  c. Fahre mit dem Fahrrad über helle und dunkle Bereiche
+  d. Drücke die Stopp-Taste, wenn Du fertig sind.
+4. Wähle eine Audioszene in der Tabelle "Szenen" aus.
+5. Fahre durch helle und dunkle Bereiche, um die Tonszene auszulösen.
+
+Wenn Du die nach oben gerichtete Frontkamera verwendest, versuchen Sie, direkt unter Bäumen, Brücken oder überhängenden Objekten zu fahren, um die Helligkeit zu beeinflussen.
+
+Einstellungen
+-------------
+
+### Wach bleiben
+
+Der Zugriff auf die Kamera für die Live-Helligkeitserkennung erfordert, dass die App aktiv bleibt. Wenn sich der Bildschirm ausschaltet, werden auch die Kamera und die Audioerzeugung angehalten, daher ist die Einstellung "Bildschirm wach halten" standardmäßig auf "Ein" gesetzt.
+
+### Kalibrierungswerte
+
+Standardmäßig werden der aktuelle Helligkeitswert und die Bereiche Min. und Max. über die horizontale Bereichsleiste in der Kalibrierungsansicht angezeigt. Um die tatsächlichen numerischen Werte zu sehen, schalten Sie die Einstellung "Kalibrierungswerte anzeigen" ein.
+
+### Qlist Record Controls
+
+Für die Entwicklung von ShadowPlay-Audioszenen werden Sensordaten aufgenommen, die Events der  Helligkeitsaktualisierung werden in einer Pure Data qlist Textdatei gespeichert. Aktiviere "Show qlist record controls", um die Aufnahme-, Wiedergabe- und Speicherknöpfe in der Hauptansicht anzuzeigen.
+
+Die aktuelle qlist kann auch nach der Aufnahme abgespielt und optional in einer Textdatei mit Zeitstempel im ShadowPlay-Dokumentenverzeichnis gespeichert werden. Du kannst auf die gespeicherte qlist entweder über die iOS Dateien-App oder Finder/iTunes File Sharing zugreifen und sie auf Deinem Desktop-Computer wiedergeben (siehe Eigene Szenen erstellen).
+
+Eigene Scenes erstellen
+-----------------------
+
+Eine ShadowPlay-Audioszene besteht im Wesentlichen aus einem Pure Data-Patch und Metadaten-Dateien in einem Ordner. Das Patch selbst empfängt Helligkeits-Update-Ereignisse, verarbeitet sie und gibt Stereo-Audio aus.
+
+Du kannst Ihre eigenen Szenen mit der Open-Source-Computermusikumgebung Pure Data entwickeln und sie in den ShadowPlay-Dokumentenordner auf Deinem Gerät hochladen, entweder über die Dateien-App oder über Finder/iTunes-Dateifreigabe. Wenn die Szenenansicht geöffnet wird, werden alle Ordner in Dokumente mit den gewünschten Szenendateien automatisch in die Liste aufgenommen.
+
+Zusätzlich ist in ShadowPlay ein Qlist-Recorder enthalten, der es ermöglicht, Helligkeits-Events entlang einer Route aufzuzeichnen, um sie während der Komposition auf deinem Desktop-Computer abzuspielen (siehe Qlist Record Controls).
+
+Details und ein Composer Pack mit einem qlist Player und einer Szenenvorlage findest Du unter:
+
+http://danomatika.com/code/shadowplay
+
+Danksagungen
+------------
+
+Unterstützt durch die UNESCO City of Media Arts Karlsruhe sowie durch die Stadt Karlsruhe.
+
+https://www.cityofmediaarts.de/
+
+Szenische Beiträge von Sofy Yuditskaya und Damian Stewart.

@@ -1,0 +1,93 @@
+
+/* Class = "UILabel"; text = "-00.00"; ObjectID = "4di-k6-jrt"; */
+"4di-k6-jrt.text" = "-00,00";
+
+/* Class = "UINavigationItem"; title = "Scenes"; ObjectID = "9jb-c3-HiT"; */
+"9jb-c3-HiT.title" = "Szenen";
+
+/* Class = "UITextView"; text = "ShadowPlay is an exploration of architecture and light in outdoor spaces through sound.\n\n\n"; ObjectID = "AmS-V0-6Cm"; */
+"AmS-V0-6Cm.text" = "ShadowPlay ist eine Erkundung von Architektur und Licht in Außenräumen durch Klang.\n\n\n";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "BUB-d5-tNg"; */
+"BUB-d5-tNg.text" = "Einzelheiten";
+
+/* Class = "UILabel"; text = "Show qlist record controls"; ObjectID = "A7X-F9-xlJ"; */
+"A7X-F9-xlJ.text" = "Qlist Kontrollen anzeigen";
+
+/* Class = "UILabel"; text = "-12.34"; ObjectID = "GUF-h7-yRQ"; */
+"GUF-h7-yRQ.text" = "-12,34";
+
+/* Class = "UITextView"; text = "To calibrate the brightness detection:\n\n1. Open ... -> Calibrate\n2. Press the Start button\n3. Roll bike over/under both light and dark areas\n4. Press Stop button when finished"; ObjectID = "I0H-4W-Sb1"; */
+"I0H-4W-Sb1.text" = "So kalibrierst Du die Helligkeitserkennung:\n\n1. Öffne ... -> Kalibrieren\n2. Drücke die Schaltfläche Start\n3. Fahre mit dem Fahrrad über/unter helle und dunkle Bereiche\n4. Drücke die Stopp-Taste, wenn Du fertig bist.";
+
+/* Class = "UIViewController"; title = "Scenes"; ObjectID = "INc-xK-69z"; */
+"INc-xK-69z.title" = "Szenen";
+
+/* Class = "UIViewController"; title = "Acknowledgements"; ObjectID = "JoZ-1w-opd"; */
+"JoZ-1w-opd.title" = "Danksagung";
+
+/* Class = "UIViewController"; title = "Setup"; ObjectID = "PgC-Vh-gVc"; */
+"PgC-Vh-gVc.title" = "Einrichten";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "RGP-oB-tJh"; */
+"RGP-oB-tJh.title" = "Einstellungen";
+
+/* Class = "UIViewController"; title = "Tutorial"; ObjectID = "Rad-V2-edm"; */
+"Rad-V2-edm.title" = "Anleitung";
+
+/* Class = "UIViewController"; title = "Scenes"; ObjectID = "Wum-Dx-mp3"; */
+"Wum-Dx-mp3.title" = "Szenen";
+
+/* Class = "UILabel"; text = "Show calibration values"; ObjectID = "F3f-iI-RO6"; */
+"F3f-iI-RO6.text" = "Kalibrierungswerte anzeigen";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "Zpr-eP-Thg"; */
+"Zpr-eP-Thg.normalTitle" = "Start";
+
+/* Class = "UIViewController"; title = "Calibrate"; ObjectID = "dJy-fO-Qcw"; */
+"dJy-fO-Qcw.title" = "Kalibrieren";
+
+/* Class = "UITextView"; text = "You can also write your own scenes using the open source Pure Data computer music environment.\n\nSee ... -> Info for details.\n\nHave fun!"; ObjectID = "dwI-1B-Bmx"; */
+"dwI-1B-Bmx.text" = "Mit der Open-Source-Computermusikumgebung Pure Data kannst Du auch Deine eigenen Szenen schreiben und verwenden.\n\nSiehe ... -> Info für Details.\n\nViel Spaß!";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "gYJ-tZ-s5h"; */
+"gYJ-tZ-s5h.text" = "Titel";
+
+/* Class = "UIViewController"; title = "Camera"; ObjectID = "gZO-8u-cPs"; */
+"gZO-8u-cPs.title" = "Kamera";
+
+/* Class = "UILabel"; text = "Keep screen awake"; ObjectID = "gg6-DJ-1VJ"; */
+"gg6-DJ-1VJ.text" = "Wach bleiben";
+
+/* Class = "UITextView"; text = "The brightness range bar on the top of the screen shows the current value in pink and the calibration range in turquoise.\n\nWhen calibrated, the current value pink line should stay within the turquoise range. \n\nIf you move to a new place or the light changes, re-calibration may be necessary."; ObjectID = "hl3-Kx-DUc"; */
+"hl3-Kx-DUc.text" = "Der Helligkeitsbereich wir im Balken oben auf dem Bildschirm angezeigt, der aktuelle Wert ist rosa und der Kalibrierungsbereich türkis.\n\nWenn die Kalibrierung abgeschlossen ist, sollte die rosa Linie des aktuellen Werts innerhalb des türkisfarbenen Bereichs sein.\n\nAn einem neuen Ort oder wenn sich die Lichtverhältnisse ändern, kann eine erneute Kalibrierung erforderlich sein.";
+
+/* Class = "UINavigationItem"; title = "Calibrate"; ObjectID = "kAp-2f-5Yp"; */
+"kAp-2f-5Yp.title" = "Kalibrieren";
+
+/* Class = "UILabel"; text = "-12.34"; ObjectID = "mAS-ez-xVc"; */
+"mAS-ez-xVc.text" = "-12,34";
+
+/* Class = "UITextView"; text = "Place device in bicycle mount with a clear view for the active camera (either front or rear).\n\nIt's Ok if part of the camera is covered, for example by the bicycle wheel, as long as most of the ground (or sky) is visible."; ObjectID = "mhw-XY-pUa"; */
+"mhw-XY-pUa.text" = "Platziere das Gerät in einer Fahrradhalterung mit freier Sicht für die aktive Kamera (entweder vorne oder hinten).\n\nEs ist in Ordnung, wenn ein Teil der Kamera verdeckt ist, z. B. durch das Rad, solange der größte Teil des Bodens (oder des Himmels) sichtbar ist.";
+
+/* Class = "UINavigationItem"; title = "Tutorial"; ObjectID = "oPb-G1-4KC"; */
+"oPb-G1-4KC.title" = "Anleitung";
+
+/* Class = "UITableViewSection"; headerTitle = "Display"; ObjectID = "pCQ-HY-D8F"; */
+"pCQ-HY-D8F.headerTitle" = "Bildschirm";
+
+/* Class = "UIViewController"; title = "Calibrate"; ObjectID = "qFv-0H-ND6"; */
+"qFv-0H-ND6.title" = "Kalibrieren";
+
+/* Class = "UITextView"; text = "Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe.\n\nScene contributions by Sofy Yuditskaya and Damian Stewart."; ObjectID = "rDI-n6-3K9"; */
+"rDI-n6-3K9.text" = "Unterstützt durch die UNESCO City of Media Arts Karlsruhe sowie durch die Stadt Karlsruhe.\n\nSzenische Beiträge von Sofy Yuditskaya und Damian Stewart.";
+
+/* Class = "UITextView"; text = "Choose an audio scene from the Scenes table which defines the live sonification of the changes in brightness.\n\nSome scenes use overall brightness, others detect the transitions between light and shadow, some work with direct input, while others are more subtle."; ObjectID = "ro7-jg-7xO"; */
+"ro7-jg-7xO.text" = "Wähle eine Audioszene aus der Tabelle Szenen aus, die die Live-Sonifikation der Helligkeitsänderungen definiert.\n\nEinige Szenen verwenden die Gesamthelligkeit, andere erkennen die Übergänge zwischen Licht und Schatten, einige arbeiten mit direkter Eingabe, während andere subtiler sind.";
+
+/* Class = "UITextView"; text = "Using a bicycle-mounted smartphone as a brightness sensor and a bluetooth speaker, the mottled patterns of light and shadow become the musical score as one rides along city streets."; ObjectID = "uQp-Uh-SDf"; */
+"uQp-Uh-SDf.text" = "Mit einem am Fahrrad befestigten Smartphone als Helligkeitssensor und einem Bluetooth-Lautsprecher werden die wechselnden Licht- und Schattenmuster zur Musik, während man die Straßen der Stadt entlangfährt.";
+
+/* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "RTW-VH-uGg"; */
+"RTW-VH-uGg.headerTitle" = "Erweitert";
