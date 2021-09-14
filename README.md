@@ -13,21 +13,26 @@ WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 Description
 -----------
 
-ShadowPlay is an exploration of architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets. Much like a simple music box plucked by patterns of pins on a rotating wheel, the transitions between light and dark as you ride control playback of prepared sequences, generated patterns, or prepared audio playback speed.
+ShadowPlay is an exploration of architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets.
 
 ![street building shadows](composerpack/doc/street%20buildings.jpeg)
 
-User Guide
-----------
+Basic Usage
+-----------
 
 1. Place device in bicycle mount with active camera uncovered (either front or rear)
 2. Open ShadowPlay application
 3. Calibrate:
-  a. Open calibration interface & press Start button
-  b. Roll bike over both light and dark areas along the route you wish to sonify
-  c. Press Stop button when finished
-4. Choose scene
+  a. Open ... -> Calibrate
+  b. Press the Start button
+  c. Roll bike over both light and dark areas
+  d. Press Stop button when finished
+4. Choose audio scene in Scenes table
 5. Ride through areas of light and dark to trigger scene audio
+
+When using the front camera facing upwards, try riding directly under trees, bridges, or overhanging objects to affect the brightness.
+
+See `tutorial.txt` and `composerpack/README.txt` for details.
 
 Developing
 ----------

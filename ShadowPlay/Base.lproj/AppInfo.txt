@@ -1,28 +1,57 @@
-ShadowPlay is an exploration of the architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets. Much like a simple music box plucked by patterns of pins on a rotating wheel, the transitions between light and dark as you ride control playback of prepared sequences, generated patterns, or prepared audio playback speed.
+ShadowPlay is an exploration of the architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets.
 
 http://danomatika.com/code/shadowplay
 
 Version 1.0.0
 
-Dan Wilcox 2021
+Dan Wilcox 2021  
 danomatika.com
 
-Usage
+Basic Usage
+-----------
 
 1. Place device in bicycle mount with active camera uncovered (either front or rear)
 2. Open ShadowPlay application
 3. Calibrate:
-  a. Open ... -> Calibrate interface & press Start button
-  b. Roll bike over both light and dark areas along the route you wish to sonify
-  c. Press Stop button when finished
+  a. Open ... -> Calibrate
+  b. Press the Start button
+  c. Roll bike over both light and dark areas
+  d. Press Stop button when finished
 4. Choose audio scene in Scenes table
 5. Ride through areas of light and dark to trigger scene audio
 
-Making Your Own Scenes
+When using the front camera facing upwards, try riding directly under trees, bridges, or overhanging objects to affect the brightness.
 
-_Info to be added._
+Settings
+--------
+
+### Keep Awake
+
+Camera access for live brightness detection requires the app to be in active use. If the screen turns off, the camera and audio generation will also be paused, therefore, by default, the "Keep screen awake" setting is set to on.
+
+### Calibration Values
+
+By default, the current brightness value and range min & max are shown via the horizontal range bar in the Calibrate view. To see the actual numeric values, turn on the "Show calibration values" setting.
+
+### Qlist Record Controls
+
+For ShadowPlay audio scene development, a built in sensor data recorder is included which saves brightness update events into a Pure Data qlist text file. Turn on "Show qlist record controls" to show the record, play, & save buttons on the main view.
+
+The current qlist can also be played back after recording and optionally saved to a timestamped text file in the ShadowPlay Documents directory. You can access the saved qlists either via the iOS Files app or Finder/iTunes file sharing and replay them on your desktop computer when composing (see Making Your Own Scenes).
+
+Making Your Own Scenes
+----------------------
+
+A ShadowPlay audio scene is essentially a Pure Data patch and metadata files in a folder. The patch itself receives brightness update events, processes them, and outputs stereo audio.
+
+You can develop your own scenes using the open source Pure Data computer music environment and upload them to the ShadowPlay Documents folder on your device, either via the Files app or Finder/iTunes file sharing. When the Scenes view is opened, any folders in Documents with the required scene files are automatically included in the list.
+
+Additionally, a qlist recorder is included in ShadowPlay to allow for recording brightness events along a route for playback on your desktop computer during composition (see Qlist Record Controls).
+
+For details and a composer pack with a qlist player and scene template, see http://danomatika.com/code/shadowplay
 
 Acknowledgements
+----------------
 
 Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe.
 

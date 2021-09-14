@@ -536,10 +536,10 @@
             </objects>
             <point key="canvasLocation" x="2061" y="599"/>
         </scene>
-        <!--Set Up-->
+        <!--Setup-->
         <scene sceneID="nnn-nr-gkw">
             <objects>
-                <viewController storyboardIdentifier="Tutorial1" title="Set Up" id="PgC-Vh-gVc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tutorial1" title="Setup" id="PgC-Vh-gVc" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhn-Af-UOw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -656,7 +656,7 @@
                                 </constraints>
                                 <string key="text">Place device in bicycle mount with a clear view for the active camera (either front or rear).
 
-It's Ok if part of the camera is covered, for example by the bicycle wheel, as long as most of the ground is visible.</string>
+It's Ok if part of the camera is covered, for example by the bicycle wheel, as long as most of the ground (or sky) is visible.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -697,7 +697,7 @@ It's Ok if part of the camera is covered, for example by the bicycle wheel, as l
 
 When calibrated, the current value pink line should stay within the turquoise range. 
 
-If you move to a new place and/or the light changes, re-calibration may be necessary.</string>
+If you move to a new place or the light changes, re-calibration may be necessary.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -742,11 +742,10 @@ If you move to a new place and/or the light changes, re-calibration may be neces
                                 </constraints>
                                 <string key="text">To calibrate the brightness detection:
 
-  1. Open ... button -&gt; Calibrate
-  2. Press the Start button
-  3. Roll bike over both light and dark areas
-  4. Press Stop button when finished
-  5. Repeat at new location</string>
+1. Open ... -&gt; Calibrate
+2. Press the Start button
+3. Roll bike over/under both light and dark areas
+4. Press Stop button when finished</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -825,7 +824,7 @@ Some scenes use overall brightness, others detect the transitions between light 
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="ZRI-7f-psZ"/>
                                 </constraints>
-                                <string key="text">You can also write your own scenes using the Pure Data graphical computer music environment.
+                                <string key="text">You can also write your own scenes using the open source Pure Data computer music environment.
 
 See ... -&gt; Info for details.
 
