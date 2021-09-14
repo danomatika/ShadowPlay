@@ -557,7 +557,6 @@
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial.bike" translatesAutoresizingMaskIntoConstraints="NO" id="aRq-Ss-74S">
                                 <rect key="frame" x="16" y="20" width="343" height="432"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aTu-KF-W7F"/>
@@ -648,7 +647,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial.camera" translatesAutoresizingMaskIntoConstraints="NO" id="sEu-Q2-SOO">
                                 <rect key="frame" x="16" y="20" width="343" height="469"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-XY-pUa">
                                 <rect key="frame" x="16" y="497" width="343" height="150"/>
@@ -656,9 +654,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="G6L-2l-Y0S"/>
                                 </constraints>
-                                <string key="text">Place device in bicycle mount with active camera uncovered (either front or rear).
+                                <string key="text">Place device in bicycle mount with a clear view for the active camera (either front or rear).
 
-It's Ok if part of the camera is covered, by the bicycle wheel for example, as long as most of the ground is visible.</string>
+It's Ok if part of the camera is covered, for example by the bicycle wheel, as long as most of the ground is visible.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -735,7 +733,6 @@ If you move to a new place and/or the light changes, re-calibration may be neces
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial.calibrate" translatesAutoresizingMaskIntoConstraints="NO" id="lHz-gr-Tvt">
                                 <rect key="frame" x="16" y="20" width="343" height="414"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0H-4W-Sb1">
                                 <rect key="frame" x="16" y="497" width="343" height="150"/>
@@ -795,7 +792,6 @@ Some scenes use overall brightness, others detect the transitions between light 
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial.scenes" translatesAutoresizingMaskIntoConstraints="NO" id="nj2-32-GVN">
                                 <rect key="frame" x="16" y="20" width="343" height="414"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FNs-ZX-PvZ"/>
@@ -838,9 +834,8 @@ Have fun!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial.puredata" translatesAutoresizingMaskIntoConstraints="NO" id="BjH-ZV-DOq">
-                                <rect key="frame" x="16" y="20" width="343" height="469"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tutorial.puredata" translatesAutoresizingMaskIntoConstraints="NO" id="BjH-ZV-DOq">
+                                <rect key="frame" x="16" y="20" width="343" height="412"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xIr-tQ-MBf"/>
@@ -858,7 +853,7 @@ Have fun!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1EO-iu-9DT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7116" y="598"/>
+            <point key="canvasLocation" x="7116" y="597.75112443778119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="19e-ti-IQc">
@@ -900,7 +895,6 @@ Scene contributions by Sofy Yuditskaya and Damian Stewart.</string>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial.unesco" translatesAutoresizingMaskIntoConstraints="NO" id="yQa-R6-URV">
                                 <rect key="frame" x="16" y="20" width="343" height="457"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d4o-j3-z3Z"/>
@@ -932,7 +926,7 @@ Scene contributions by Sofy Yuditskaya and Damian Stewart.</string>
         <image name="tutorial.bike" width="432" height="432"/>
         <image name="tutorial.calibrate" width="288" height="414"/>
         <image name="tutorial.camera" width="576" height="432"/>
-        <image name="tutorial.puredata" width="1024" height="1024"/>
+        <image name="tutorial.puredata" width="288" height="288"/>
         <image name="tutorial.rangebar" width="198" height="36"/>
         <image name="tutorial.scenes" width="288" height="414"/>
         <image name="tutorial.street" width="1512" height="2016"/>
