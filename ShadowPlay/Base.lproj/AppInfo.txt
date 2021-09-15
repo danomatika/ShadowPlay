@@ -1,4 +1,4 @@
-ShadowPlay is an exploration of the architecture and light in outdoor spaces through sound. Using a bicycle-mounted sensor and a smartphone aimed skywards, the mottled patterns of light and shadow become the musical score and one rides along their city streets.
+ShadowPlay is an exploration of the architecture and light in outdoor spaces through sound. Using a bicycle-mounted smartphone as a brightness sensor and a bluetooth speaker, the mottled patterns of light and shadow become the musical score as one rides along city streets.
 
 http://danomatika.com/code/shadowplay
 

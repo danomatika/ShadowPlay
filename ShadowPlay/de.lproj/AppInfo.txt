@@ -1,4 +1,4 @@
-ShadowPlay ist eine Erkundung der Architektur und des Lichts in Außenbereichen durch Klang. Mit einem am Fahrrad montierten Sensor und einem in den Himmel gerichteten Smartphone werden die gesprenkelten Licht- und Schattenmuster zur Musik und man fährt durch die Straßen seiner Stadt.
+ShadowPlay ist eine Erkundung der Architektur und des Lichts in Außenbereichen durch Klang. Mit einem am Fahrrad befestigten Smartphone als Helligkeitssensor und einem Bluetooth-Lautsprecher werden die wechselnden Licht- und Schattenmuster zur Musik, während man die Straßen der Stadt entlangfährt.
 
 http://danomatika.com/code/shadowplay
 
