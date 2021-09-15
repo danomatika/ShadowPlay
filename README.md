@@ -22,7 +22,9 @@ ShadowPlay is an exploration of architecture and light in outdoor spaces through
 Basic Usage
 -----------
 
-![ShadowPlay version 1.0.0 screen recording](http://danomatika.com/projects/shadowplay/shadowplay-screen-recording.mov)
+<div style="text-align: center;">
+  <video src="http://danomatika.com/projects/shadowplay/shadowplay-screen-recording.mov" alt="ShadowPlay version 1.0.0 screen recording" width="100%" height="480" controls></video>
+</div>
 
 1. Place device in bicycle mount with active camera uncovered (either front or rear)
 2. Open ShadowPlay application
