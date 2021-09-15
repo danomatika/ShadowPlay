@@ -25,10 +25,10 @@ Basic Usage
 1. Place device in bicycle mount with active camera uncovered (either front or rear)
 2. Open ShadowPlay application
 3. Calibrate:
-  a. Open ... -> Calibrate
-  b. Press the Start button
-  c. Roll bike over both light and dark areas
-  d. Press Stop button when finished
+  * a. Open ... -> Calibrate
+  * b. Press the Start button
+  * c. Roll bike over both light and dark areas
+  * d. Press Stop button when finished
 4. Choose audio scene in Scenes table
 5. Ride through areas of light and dark to trigger scene audio
 
