@@ -8,6 +8,28 @@
 
 import UIKit
 
+extension UIViewController {
+
+	/// textviews don't seem to load their own localizations automatically, so
+	/// force it by using the text string's storyboard ID in the textview's
+	/// restoraztion ID in IB the calling NSLocalizedString
+	/// from https://stackoverflow.com/a/34452658
+	func localizeUITextViewsFromStoryboard(storyboardName: String) {
+		for view in self.view.subviews {
+			if let textView = view as? UITextView,
+				let restorationIdentifier = textView.restorationIdentifier {
+				let key = "\(restorationIdentifier).text"
+				let localizedText = NSLocalizedString(key, tableName: storyboardName, comment: "")
+				if localizedText != key {
+					textView.text = localizedText
+				}
+
+			}
+		}
+	}
+
+}
+
 /// usage tutorial presented as a series of 0-indexed "Tutorial#" pages in the storyboard
 class TutorialViewController: UIPageViewController,
 							  UIPageViewControllerDelegate,
@@ -31,6 +53,7 @@ class TutorialViewController: UIPageViewController,
 			pages.append(page)
 		}
 
+		pages[0].localizeUITextViewsFromStoryboard(storyboardName: "Main") // localize!
 		setViewControllers([pages[0]], direction: .forward, animated: true, completion: nil)
 	}
 
@@ -44,6 +67,7 @@ class TutorialViewController: UIPageViewController,
 
 	func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
 		navigationItem.title = pendingViewControllers[0].title
+		pendingViewControllers[0].localizeUITextViewsFromStoryboard(storyboardName: "Main")
 	}
 
 	func presentationIndex(for pageViewController: UIPageViewController) -> Int {
