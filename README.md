@@ -1,7 +1,7 @@
 ShadowPlay
 ==========
 
-![ShadowPlay app icon](media/shadowplay-icon-rounded.svg)
+![ShadowPlay app icon](media/shadowplay-icon-rounded.png)
 
 Copyright (c) [Dan Wilcox](danomatika.com) 2021
 
@@ -22,10 +22,6 @@ ShadowPlay is an exploration of architecture and light in outdoor spaces through
 Basic Usage
 -----------
 
-<div style="text-align: center;">
-  <video src="http://danomatika.com/projects/shadowplay/shadowplay-screen-recording.mov" alt="ShadowPlay version 1.0.0 screen recording" width="100%" height="480" controls></video>
-</div>
-
 1. Place device in bicycle mount with active camera uncovered (either front or rear)
 2. Open ShadowPlay application
 3. Calibrate:
@@ -38,7 +34,7 @@ Basic Usage
 
 When using the front camera facing upwards, try riding directly under trees, bridges, or overhanging objects to affect the brightness.
 
-For a user friendly tutorial: [ShadowPlay Tutorial PDF](http://danomatika.com/projects/shadowplay/shadowplay-tutorial.pdf)
+For a user friendly info: [ShadowPlay Tutorial PDF](http://danomatika.com/projects/shadowplay/shadowplay-tutorial.pdf) and [ShadwoPlay version 1.0.0 screen recording MOV](http://danomatika.com/projects/shadowplay/shadowplay-screen-recording.mov)
 
 See `tutorial.txt` and `composerpack/README.txt` for additional usage and scene composition details.
 
