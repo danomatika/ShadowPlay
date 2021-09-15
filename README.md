@@ -34,7 +34,7 @@ Basic Usage
 
 When using the front camera facing upwards, try riding directly under trees, bridges, or overhanging objects to affect the brightness.
 
-For a user friendly info: [ShadowPlay Tutorial PDF](http://danomatika.com/projects/shadowplay/shadowplay-tutorial.pdf) and [ShadwoPlay version 1.0.0 screen recording MOV](http://danomatika.com/projects/shadowplay/shadowplay-screen-recording.mov)
+For a user friendly info: [ShadowPlay Tutorial PDF](http://danomatika.com/projects/shadowplay/shadowplay-tutorial.pdf) and [ShadowPlay version 1.0.0 screen recording MOV](http://danomatika.com/projects/shadowplay/shadowplay-screen-recording.mov)
 
 See `tutorial.txt` and `composerpack/README.txt` for additional usage and scene composition details.
 
