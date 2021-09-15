@@ -17,17 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial.street" translatesAutoresizingMaskIntoConstraints="NO" id="SRE-73-csY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadowplay" translatesAutoresizingMaskIntoConstraints="NO" id="apB-nu-cc1">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0fG-vb-GY6"/>
+                                    <constraint firstAttribute="height" constant="200" id="uZ6-nT-rEy"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SRE-73-csY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6vJ-lr-k25"/>
-                            <constraint firstItem="SRE-73-csY" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="fIY-vo-EmF"/>
-                            <constraint firstItem="SRE-73-csY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fY5-7X-z3S"/>
-                            <constraint firstAttribute="bottom" secondItem="SRE-73-csY" secondAttribute="bottom" id="wF7-9W-voq"/>
+                            <constraint firstItem="apB-nu-cc1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IIZ-ql-Cdb"/>
+                            <constraint firstItem="apB-nu-cc1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ORu-ZF-ubS"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tutorial.street" width="1512" height="2016"/>
+        <image name="shadowplay" width="284" height="284"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
