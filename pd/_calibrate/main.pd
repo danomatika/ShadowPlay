@@ -1,8 +1,8 @@
-#N canvas 725 108 475 710 12;
+#N canvas 725 62 475 710 12;
 #X declare -path ./lib;
 #X obj 41 503 osc~;
-#X obj 41 587 hip~ 5;
-#X obj 41 665 dac~;
+#X obj 41 598 hip~ 5;
+#X obj 41 672 dac~;
 #X obj 41 331 expr $f1 * 64 + 32;
 #X text 185 332 MIDI 32 - 96;
 #X obj 124 365 - 12;
@@ -14,7 +14,7 @@
 #X obj 41 267 change;
 #X text 100 268 quantize slightly to smooth;
 #X obj 68 180 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 6000 1;
 #X msg 41 435 \$1 100;
 #X obj 41 151 unpack f f;
 #X obj 41 536 *~ 0.8;
@@ -32,7 +32,7 @@
 #X obj 88 121 s \$0-on;
 #X obj 246 453 sel 0;
 #X obj 246 536 vline~;
-#X obj 41 625 *~;
+#X obj 41 632 *~;
 #X obj 296 479 t b b;
 #X obj 246 479 t b b;
 #X obj 246 426 r \$0-on;
@@ -43,6 +43,8 @@
 #X msg 246 508 0 25;
 #X msg 296 508 1 25;
 #X obj 348 564 pipe 25;
+#X obj 41 570 *~ 0.5;
+#X text 95 570 quieter;
 #X connect 0 0 16 0;
 #X connect 1 0 31 0;
 #X connect 3 0 24 0;
@@ -56,8 +58,8 @@
 #X connect 13 0 8 0;
 #X connect 14 0 21 0;
 #X connect 15 0 8 0;
-#X connect 16 0 1 0;
-#X connect 17 0 1 0;
+#X connect 16 0 42 0;
+#X connect 17 0 42 0;
 #X connect 19 0 20 0;
 #X connect 20 0 17 0;
 #X connect 21 0 0 0;
@@ -84,3 +86,4 @@
 #X connect 39 0 30 0;
 #X connect 40 0 30 0;
 #X connect 41 0 37 0;
+#X connect 42 0 1 0;
