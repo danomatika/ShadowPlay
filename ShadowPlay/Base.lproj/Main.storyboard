@@ -150,6 +150,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Scenes" id="9jb-c3-HiT">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="MRY-jz-kH7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Adx-Yv-zjI">
+                                <rect key="frame" x="16" y="17" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reload:" destination="NSz-CR-NAm" eventType="touchUpInside" id="nQL-rg-vyd"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="P3r-Ke-1Sj">
                             <connections>
                                 <action selector="done:" destination="NSz-CR-NAm" id="m3R-PN-HX5"/>
@@ -918,6 +928,7 @@ Scene contributions by Sofy Yuditskaya and Damian Stewart.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="camera.rotate" catalog="system" width="128" height="94"/>
         <image name="doc.fill.badge.plus" catalog="system" width="122" height="128"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>

@@ -8,21 +8,8 @@
 
 import UIKit
 
-struct Scene {
-	let url: URL
-	let meta: SceneMeta
-}
-
-struct SceneMeta : Codable {
-	let name: String
-	let author: String
-	let description: String
-}
-
-/// sound scenes list
+/// sound scenes list selector
 class ScenesViewController: UITableViewController {
-
-	var scenes: [Scene] = []
 
 	weak var mainViewController: MainViewController? // required!
 
@@ -33,36 +20,17 @@ class ScenesViewController: UITableViewController {
 		// Do any additional setup after loading the view.
 
 		tableView.tableFooterView = UIView(frame: .zero) // no empty rows
+	}
 
-		// load scenes from patch directory
-		let manager = FileManager.default
-		var contents: [URL] = []
-		do {
-			try contents = manager.contentsOfDirectory(at: AppDelegate.patchDirectory(),
-			                                           includingPropertiesForKeys: nil,
-			                                           options: [.skipsHiddenFiles])
-		}
-		catch {
-			print("ScenesViewController: could not read patch directory: \(error)")
-		}
-		for url in contents {
-			if url.hasDirectoryPath {
-				let name = url.lastPathComponent
-				if name.count == 0 || name[0] == "_" {continue} // skip dirs starting with _
-				let main = url.appendingPathComponent("main.pd")
-				let info = url.appendingPathComponent("info.json")
-				if manager.fileExists(atPath: main.path) && manager.fileExists(atPath: info.path) {
-					do {
-						let data = try Data(contentsOf: info)
-						let meta = try JSONDecoder().decode(SceneMeta.self, from: data)
-						let scene = Scene(url: url, meta: meta)
-						scenes.append(scene)
-					}
-					catch {
-						print("ScenesViewController: could not parse info.json: \(error)")
-					}
-				}
-			}
+	override func viewWillAppear(_ animated: Bool) {
+		selectCurrentScene()
+	}
+
+	func selectCurrentScene() {
+		if let scenes = mainViewController?.sceneList, scenes.count > 0 {
+			let indexPath = IndexPath(row: scenes.currentIndex, section: 0)
+			tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+			printDebug("ScenesViewController: selected row \(indexPath.row)")
 		}
 	}
 
@@ -72,27 +40,39 @@ class ScenesViewController: UITableViewController {
 		dismiss(animated: true, completion: nil)
 	}
 
+	@IBAction func reload(_ sender: Any) {
+		let scenes = mainViewController!.sceneList
+		scenes.reload()
+		if let scene = scenes.current {
+			let _ = mainViewController!.openScene(at: scene.url)
+		}
+		self.tableView.reloadData()
+		selectCurrentScene()
+	}
+
 	// MARK: UITableViewController
 
 	// table length
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return scenes.count
+		return mainViewController!.sceneList.count
 	}
 
-	// create cells from playlist files
+	// create cells from scene data
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "SceneCell", for: indexPath)
-		let scene = scenes[indexPath.row]
-		cell.textLabel?.text = scene.meta.name
-		cell.detailTextLabel?.text = scene.meta.author
+		if let scene = mainViewController!.sceneList.scene(at: indexPath.row) {
+			cell.textLabel?.text = scene.meta.name
+			cell.detailTextLabel?.text = scene.meta.author
+		}
 		return cell
 	}
 
 	/// open scene on selection
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let scene = scenes[indexPath.row]
-		printDebug("ScenesViewController: selected \(scene.meta.name)")
-		let _ = mainViewController!.openScene(scene.url.lastPathComponent)
+		if let scene = mainViewController!.sceneList.goto(index: indexPath.row) {
+			printDebug("ScenesViewController: selected \(scene.meta.name)")
+			let _ = mainViewController!.openScene(at: scene.url)
+		}
 		dismiss(animated: true, completion: nil)
 	}
 

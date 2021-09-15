@@ -10,16 +10,18 @@ import AVKit
 
 class MainViewController: UIViewController, PdReceiverDelegate,
                       AVCaptureVideoDataOutputSampleBufferDelegate {
-	var camera: AVCaptureDevice?
 
 	let session = AVCaptureSession()
+	var camera: AVCaptureDevice?
 	var brightness: Float = 0
 	var rawBrightness: Float = 0
 	var range: ClosedRange<Float> = 6...11 // default outdoor
 	let rawRange: ClosedRange<Float> = -16...16
 
+	let sceneList = SceneList()
+
 	let controller = PdAudioController()
-	let patch = PdFile()
+	let patch = PdFile() //< current scene main.pd
 	let qlister = Qlister()
 
 	weak var calibrateViewController: CalibrateViewController?
@@ -32,13 +34,15 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 
 		controlsView.mainViewController = self
 		qlister.delegate = controlsView
-		//controlsView.isHidden = true
 
 		let defaults = UserDefaults.standard
 		range = defaults.float(forKey: "rangeMin")...defaults.float(forKey: "rangeMax")
 		if defaults.bool(forKey: "keepAwake") {
 			UIApplication.shared.isIdleTimerDisabled = true // keep screen awake
 		}
+
+		// load scene data
+		sceneList.load()
 
 		// set up pure data
 		controller?.allowBluetooth = true
@@ -63,7 +67,9 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		#endif
 		PdBase.setDelegate(self)
 		PdBase.subscribe("#app")
-		let _ = openScene("theremin")
+		if let scene = sceneList.goto(name: "Theremin") {
+			let _ = openScene(at: scene.url)
+		}
 		if !qlister.open() {
 			print("could not open qlister.pd")
 		}
@@ -127,18 +133,17 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		}
 	}
 
-	func openScene(_ name: String) -> Bool {
-		let path = AppDelegate.patchDirectory().appendingPathComponent(name).path
+	func openScene(at url: URL) -> Bool {
 		if patch.isValid() {
 			muteScene()
 			Thread.sleep(forTimeInterval: 0.025) // let fade finish before closing
 			self.patch.close()
 		}
-		if !patch.open("main.pd", path: path) {
-			printDebug("could not open \(name) main.pd")
+		if !patch.open("main.pd", path: url.path) {
+			printDebug("could not open \(url.lastPathComponent) main.pd")
 			// FIXME: show alert after 2 seconds to avoid UI transitions/animations
 			let alert = UIAlertController(title: NSLocalizedString("Alert.OpenScene.title", comment: "Audio Error"),
-										  message: String(format: NSLocalizedString("Alert.OpenScene.message", comment: "Could not open scene %@"), name),
+										  message: String(format: NSLocalizedString("Alert.OpenScene.message", comment: "Could not open scene %@"), url.lastPathComponent),
 										  preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
 			alert.modalPresentationStyle = .overCurrentContext
