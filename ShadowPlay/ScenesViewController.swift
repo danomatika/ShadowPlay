@@ -11,6 +11,8 @@ import UIKit
 /// sound scenes list selector
 class ScenesViewController: UITableViewController {
 
+	var infoIndex = -1 //< index of row when info button is tapped
+
 	weak var mainViewController: MainViewController? // required!
 
 	@IBOutlet weak var doneButton: UIBarButtonItem!
@@ -24,6 +26,14 @@ class ScenesViewController: UITableViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		selectCurrentScene()
+	}
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowSceneInfo",
+		   let controller = segue.destination as? SceneInfoViewController  {
+			controller.scene = mainViewController!.sceneList.scene(at: infoIndex)
+			infoIndex = -1
+		}
 	}
 
 	func selectCurrentScene() {
@@ -74,6 +84,12 @@ class ScenesViewController: UITableViewController {
 			let _ = mainViewController!.openScene(at: scene.url)
 		}
 		dismiss(animated: true, completion: nil)
+	}
+
+	/// set index of info button row before starting segue
+	override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+		infoIndex = indexPath.row
+		performSegue(withIdentifier: "ShowSceneInfo", sender: nil)
 	}
 
 	// no cells can be edited
