@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 1182 1182" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(0.901605,0,0,0.901605,58.1535,57.2519)">
-        <clipPath id="_clip1">
-            <path d="M1180,208.325C1180,94.451 1087.55,2 973.675,2L207.325,2C93.451,2 1,94.451 1,208.325L1,974.675C1,1088.55 93.451,1181 207.325,1181L973.675,1181C1087.55,1181 1180,1088.55 1180,974.675L1180,208.325Z"/>
-        </clipPath>
-        <g clip-path="url(#_clip1)">
-            <g transform="matrix(1.10913,-0,-0,1.10913,-64.5,-63.5)">
-                <use xlink:href="#_Image2" x="59.056" y="59.056" width="1062.99px" height="1062.99px" transform="matrix(0.999993,0,0,0.999993,0,0)"/>
+<svg width="100%" height="100%" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.305112,0,0,0.305112,19.6797,19.3746)">
+        <g>
+            <clipPath id="_clip1">
+                <path d="M1180,208.325C1180,94.451 1087.55,2 973.675,2L207.325,2C93.451,2 1,94.451 1,208.325L1,974.675C1,1088.55 93.451,1181 207.325,1181L973.675,1181C1087.55,1181 1180,1088.55 1180,974.675L1180,208.325Z"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1.10912,0,0,1.10912,1.00032,2.00032)">
+                    <use id="_Image2_" serif:id="_Image2" xlink:href="#_Image2" x="0" y="0" width="1063px" height="1063px"/>
+                </g>
             </g>
         </g>
-        <clipPath id="_clip3">
-            <path d="M1195.02,208.325C1195.02,86.162 1095.84,-13.02 973.675,-13.02L207.325,-13.02C85.162,-13.02 -14.02,86.162 -14.02,208.325L-14.02,974.675C-14.02,1096.84 85.162,1196.02 207.325,1196.02L973.675,1196.02C1095.84,1196.02 1195.02,1096.84 1195.02,974.675L1195.02,208.325ZM1164.98,208.325L1164.98,974.675C1164.98,1080.26 1079.26,1165.98 973.675,1165.98C973.675,1165.98 207.325,1165.98 207.325,1165.98C101.741,1165.98 16.02,1080.26 16.02,974.675C16.02,974.675 16.02,208.325 16.02,208.325C16.02,102.741 101.741,17.02 207.325,17.02C207.325,17.02 973.675,17.02 973.675,17.02C1079.26,17.02 1164.98,102.741 1164.98,208.325Z"/>
-        </clipPath>
-        <g clip-path="url(#_clip3)">
-            <g transform="matrix(1.10913,-0,-0,1.10913,-64.5,-63.5)">
-                <use xlink:href="#_Image4" x="45.552" y="45.552" width="1090.08px" height="1090.08px" transform="matrix(0.999153,0,0,0.999153,0,0)"/>
+        <g>
+            <clipPath id="_clip3">
+                <path d="M1195.02,208.325C1195.02,86.162 1095.84,-13.02 973.675,-13.02L207.325,-13.02C85.162,-13.02 -14.02,86.162 -14.02,208.325L-14.02,974.675C-14.02,1096.84 85.162,1196.02 207.325,1196.02L973.675,1196.02C1095.84,1196.02 1195.02,1096.84 1195.02,974.675L1195.02,208.325ZM1164.98,208.325L1164.98,974.675C1164.98,1080.26 1079.26,1165.98 973.675,1165.98L207.325,1165.98C101.741,1165.98 16.02,1080.26 16.02,974.675L16.02,208.325C16.02,102.741 101.741,17.02 207.325,17.02L973.675,17.02C1079.26,17.02 1164.98,102.741 1164.98,208.325Z"/>
+            </clipPath>
+            <g clip-path="url(#_clip3)">
+                <g transform="matrix(1.10819,0,0,1.10819,-14.0197,-13.0197)">
+                    <use id="_Image4_" serif:id="_Image4" xlink:href="#_Image4" x="0" y="0" width="1091px" height="1091px"/>
+                </g>
             </g>
         </g>
     </g>
