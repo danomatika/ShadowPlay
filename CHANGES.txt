@@ -1,3 +1,27 @@
+1.0.0: 15 Sep 2021
+
+Seasons of Media Arts release
+
+* added app icon and launch image
+* added missing iOS 13 icons
+* added scene info view and scenes view info buttons
+* current scene now shown via selection in scenes view
+* added scenes view reload button
+* scenes now additionally loaded from app Documents directory
+* added German localization
+
+* scene adjustments:
+  - mixed and tweaked scene levels
+  - add missing libs for _calibrate
+  - lowered calibrate scene volume by half
+  - lowered theremin volume slightly
+  - renamed sequence scene to steppingout
+  -added reverb and clip to theremin scene
+  - added stereoout~ output volume handler to scene template
+* updated readme with links and additional images
+
+* don't target ipad for now
+
 0.2.0: 14 Sep 2021
 
 beta

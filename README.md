@@ -64,11 +64,10 @@ Open the Xcode project and Build/Run.
 Acknowledgments
 ---------------
 
+Sound scene contributions by:
+* Sofy Yuditskaya (New York, USA) <https://www.yuditskaya.com>
+* Damian Stewart (Vienna, AT) <http://damianstewart.com>
+
 Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe. / Unterstützt durch die UNESCO City of Media Arts Karlsruhe sowie durch die Stadt Karlsruhe.
 
 ![KA UNESCO COMA logo](media/logo_karlsruhe-unesco_rgb.svg)
-
-Sound scene contributions by:
-
-* Sofy Yuditskaya (New York, USA) <https://www.yuditskaya.com>
-* Damian Stewart (Vienna, AT) <http://damianstewart.com>
