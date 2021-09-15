@@ -89,5 +89,16 @@
 /* Class = "UITextView"; text = "Using a bicycle-mounted smartphone as a brightness sensor and a bluetooth speaker, the mottled patterns of light and shadow become the musical score as one rides along city streets."; ObjectID = "uQp-Uh-SDf"; */
 "uQp-Uh-SDf.text" = "Mit einem am Fahrrad befestigten Smartphone als Helligkeitssensor und einem Bluetooth-Lautsprecher werden die wechselnden Licht- und Schattenmuster zur Musik, während man die Straßen der Stadt entlangfährt.";
 
+/** Manually Added **/
+
 /* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "RTW-VH-uGg"; */
 "RTW-VH-uGg.headerTitle" = "Erweitert";
+
+/* Class = "UILabel; text = "Author"; ObjectID = "cKI-Ey-nR9"; */
+"cKI-Ey-nR9.text" = "Autor";
+
+/* Class = "UILabel; text = "Name"; ObjectID = "2wy-Cd-rAt"; */
+"2wy-Cd-rAt.text" = "Name";
+
+/* Class = "UILabel; text = "Website"; ObjectID = "kmc-s7-I0v"; */
+"kmc-s7-I0v.text" = "Webseite";
