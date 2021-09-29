@@ -25,14 +25,12 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 
 	fileprivate var _observer: Any? //< notification observer key
 
-	// set up capture session, ref: https://stackoverflow.com/q/9856114
+	// set up capture session and video output, ref: https://stackoverflow.com/q/9856114
 	override init() {
 		super.init()
 
 		session.sessionPreset = .high
 		session.automaticallyConfiguresCaptureDeviceForWideColor = false
-
-		let _ = setup(position: .back)
 
 		let videoDataOutput = AVCaptureVideoDataOutput()
 		videoDataOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey) : kCVPixelFormatType_32BGRA]
@@ -59,7 +57,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 	}
 
 	/// setup camera input, either from .front or .back position
-	func setup(position: AVCaptureDevice.Position) -> Bool {
+	func setup(position: AVCaptureDevice.Position) {
 		let wasRunning = session.isRunning
 		session.stopRunning()
 		for input in session.inputs {
@@ -70,7 +68,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 										 position: position)
 		guard let camera = camera else {
 			print("Camera: could not create capture device")
-			return false
+			return
 		}
 		do {
 			let input = try AVCaptureDeviceInput(device: camera)
@@ -78,7 +76,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 		}
 		catch {
 			print("Camera: could not create device input: \(error)")
-			return false
+			return
 		}
 		do {
 			try camera.lockForConfiguration()
@@ -91,21 +89,21 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 		}
 		catch {
 			print("Camera: configuration failed: \(error)")
-			return false
+			return
 		}
 		if wasRunning {
 			session.startRunning()
 		}
-		return true
+		return
 	}
 
 	/// swap the camera position
 	func swap() {
 		if(camera?.position == .front) {
-			let _ = setup(position: .back)
+			setup(position: .back)
 		}
 		else {
-			let _ = setup(position: .front)
+			setup(position: .front)
 		}
 	}
 

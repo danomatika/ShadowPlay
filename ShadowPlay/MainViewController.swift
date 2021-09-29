@@ -32,6 +32,7 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 		if defaults.bool(forKey: "keepAwake") {
 			UIApplication.shared.isIdleTimerDisabled = true // keep screen awake
 		}
+		let position = AVCaptureDevice.Position(rawValue: defaults.integer(forKey: "camera")) ?? .back
 
 		// load scene data
 		sceneList.load()
@@ -45,6 +46,7 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 
 		// camera
 		camera.delegate = self
+		camera.setup(position: position)
 		camera.start()
 	}
 

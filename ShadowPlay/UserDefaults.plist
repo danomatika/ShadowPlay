@@ -14,5 +14,7 @@
 	<false/>
 	<key>showTutorialOnLaunch</key>
 	<true/>
+	<key>cameraPosition</key>
+	<integer>1</integer>
 </dict>
 </plist>

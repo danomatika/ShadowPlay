@@ -145,6 +145,8 @@ class CalibrateViewController: UIViewController {
 
 	@IBAction func swapCamera(_ sender: Any) {
 		mainViewController!.camera.swap()
+		let position = mainViewController!.camera.camera?.position
+		UserDefaults.standard.setValue(position?.rawValue, forKey: "camera")
 	}
 
 }
