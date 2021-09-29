@@ -10,7 +10,7 @@ import AVKit
 
 /// camera capture session delegate
 protocol CameraDelegate {
-	func cameraDidChange(rawBrightness: Float)
+	func camera(_ camera: Camera, didChange rawBrightness: Float)
 }
 
 /// camera capture session to read per-frame brightness level
@@ -131,7 +131,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 		if let exif = metadata[String(kCGImagePropertyExifDictionary)] as? [String: Any],
 		   let rawBrightness = exif[String(kCGImagePropertyExifBrightnessValue)] as? NSNumber {
 			self.rawBrightness = rawBrightness.floatValue
-			self.delegate?.cameraDidChange(rawBrightness: self.rawBrightness)
+			self.delegate?.camera(self, didChange: self.rawBrightness)
 		}
 	}
 

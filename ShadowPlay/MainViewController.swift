@@ -138,7 +138,7 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 
 	// MARK: CameraDelegate
 
-	func cameraDidChange(rawBrightness: Float) {
+	func camera(_ camera: Camera, didChange rawBrightness: Float) {
 		let brightness = rawBrightness.clamped(to: range).mapped(from: range, to: 0...1)
 		//printDebug("brightness \(brightness) raw \(rawBrightness)")
 		DispatchQueue.main.async {
