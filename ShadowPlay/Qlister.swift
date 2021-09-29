@@ -5,6 +5,7 @@
 //  Created by Dan Wilcox on 8/25/21.
 //
 
+/// qlister.pd patch event delegate
 protocol QlisterDelegate {
 	func qlisterDidStartPlaying(_ qlister: Qlister)
 	func qlisterDidStopPlaying(_ qlister: Qlister)
@@ -12,6 +13,7 @@ protocol QlisterDelegate {
 	func qlisterDidStopRecording(_ qlister: Qlister)
 }
 
+/// communication wrapper for qlister.pd patch
 class Qlister {
 
 	var isPlaying = false

@@ -6,17 +6,12 @@
 //
 
 import UIKit
-import AVKit
 
-class MainViewController: UIViewController, PdReceiverDelegate,
-                      AVCaptureVideoDataOutputSampleBufferDelegate {
+class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 
-	let session = AVCaptureSession()
-	var camera: AVCaptureDevice?
-	var brightness: Float = 0
-	var rawBrightness: Float = 0
+	let camera = Camera() //< camera brightness input
+	var brightness: Float = 0 // normalized 0 - 1
 	var range: ClosedRange<Float> = 6...11 // default outdoor
-	let rawRange: ClosedRange<Float> = -16...16
 
 	let sceneList = SceneList()
 
@@ -76,29 +71,9 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		controller?.isActive = true
 		PdBase.computeAudio(true)
 
-		// set up capture session, ref: https://stackoverflow.com/q/9856114
-		session.sessionPreset = .high
-		session.automaticallyConfiguresCaptureDeviceForWideColor = false
-
-		let _ = setupCamera(position: .back)
-
-		let videoDataOutput = AVCaptureVideoDataOutput()
-		videoDataOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey) : kCVPixelFormatType_32BGRA]
-		videoDataOutput.alwaysDiscardsLateVideoFrames = true
-		let queue = DispatchQueue.init(label: "cameraQueue",
-		                               qos: .userInteractive,
-		                               attributes: .concurrent,
-		                               autoreleaseFrequency: .inherit,
-		                               target: .none)
-		videoDataOutput.setSampleBufferDelegate(self, queue: queue)
-		session.addOutput(videoDataOutput)
-
-		NotificationCenter.default.addObserver(forName: .AVCaptureSessionRuntimeError,
-		                                       object: self, queue: .main) { Notification in
-			print("capture session runtime error")
-		}
-
-		session.startRunning()
+		// camera
+		camera.delegate = self
+		camera.start()
 	}
 
 	// show tutorial on first launch
@@ -163,46 +138,6 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		PdBase.sendList([1, 25], toReceiver: "#volume") // fade in to avoid clicks
 	}
 
-	func setupCamera(position: AVCaptureDevice.Position) -> Bool {
-		let wasRunning = session.isRunning
-		session.stopRunning()
-		for input in session.inputs {
-			session.removeInput(input)
-		}
-		camera = AVCaptureDevice.default(.builtInWideAngleCamera,
-		                                 for: .video,
-		                                 position: position)
-		guard let camera = camera else {
-			print("could not create camera")
-			return false
-		}
-		do {
-			let input = try AVCaptureDeviceInput(device: camera)
-			session.addInput(input)
-		}
-		catch {
-			print("could create device input: \(error)")
-			return false
-		}
-		do {
-			try camera.lockForConfiguration()
-			camera.whiteBalanceMode = .continuousAutoWhiteBalance
-			camera.exposureMode = .continuousAutoExposure
-			if camera.isFocusModeSupported(.continuousAutoFocus) {
-				camera.focusMode = .continuousAutoFocus
-			}
-			camera.unlockForConfiguration()
-		}
-		catch {
-			print("camera configuration failed: \(error)")
-			return false
-		}
-		if wasRunning {
-			session.startRunning()
-		}
-		return true
-	}
-
 	// MARK: Actions
 
 	/// show more actions
@@ -241,6 +176,21 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		present(alert, animated: true, completion: nil)
 	}
 
+	// MARK: CameraDelegate
+
+	func cameraDidChange(rawBrightness: Float) {
+		let brightness = rawBrightness.clamped(to: range).mapped(from: range, to: 0...1)
+		//printDebug("brightness \(brightness) raw \(rawBrightness)")
+		DispatchQueue.main.async {
+			self.brightness = self.brightness.mavg(brightness, windowSize: 2)
+				if !self.qlister.isPlaying {
+					PdBase.sendList([self.brightness, rawBrightness], toReceiver: "#brightness")
+					self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
+				}
+				self.calibrateViewController?.update(rawBrightness: rawBrightness)
+		}
+	}
+
 	// MARK: PdReceiverDelegate
 
 	func receivePrint(_ message: String!) {
@@ -272,27 +222,4 @@ class MainViewController: UIViewController, PdReceiverDelegate,
 		}
 	}
 
-	// MARK: AVCaptureVideoDataOutputSampleBufferDelegate
-
-	// read brightness level from frame EXIF metadata,
-	// ref: https://stackoverflow.com/a/22836060
-	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-		let metadata = sampleBuffer.attachments.propagated
-		if let exif = metadata[String(kCGImagePropertyExifDictionary)] as? [String: Any],
-		   let rawBrightness = exif[String(kCGImagePropertyExifBrightnessValue)] as? NSNumber {
-			let brightness = rawBrightness.floatValue.clamped(to: range).mapped(from: range, to: 0...1)
-			//printDebug("brightness \(brightness) raw \(rawBrightness.floatValue)")
-			DispatchQueue.main.async {
-				self.rawBrightness = rawBrightness.floatValue
-				self.brightness = self.brightness.mavg(brightness, windowSize: 2)
-				if !self.qlister.isPlaying {
-					PdBase.sendList([self.brightness, rawBrightness.floatValue], toReceiver: "#brightness")
-					self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
-				}
-				self.calibrateViewController?.update(raw: rawBrightness.floatValue)
-			}
-		}
-	}
-
 }
-

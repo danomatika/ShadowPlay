@@ -37,7 +37,7 @@ class CalibrateViewController: UIViewController {
 		view.backgroundColor = .black
 
 		// camera preview
-		let previewLayer = AVCaptureVideoPreviewLayer.init(session: mainViewController!.session)
+		let previewLayer = mainViewController!.camera.createPreviewLayer()
 		previewLayer.frame = view.bounds
 		view.layer.addSublayer(previewLayer)
 		for(subview) in view.subviews { // make sure subviews stay above
@@ -72,26 +72,26 @@ class CalibrateViewController: UIViewController {
 		mainViewController?.unmuteScene()
 	}
 
-	func update(raw: Float) {
+	func update(rawBrightness: Float) {
 		if isCalibrating {
-			if raw < rangeMin {
-				rangeMin = raw
+			if rawBrightness < rangeMin {
+				rangeMin = rawBrightness
 			}
-			if raw > rangeMax {
-				rangeMax = raw
+			if rawBrightness > rangeMax {
+				rangeMax = rawBrightness
 			}
 		}
 
 		let range = rangeMin...rangeMax
-		let brightness = raw.clamped(to: range).mapped(from: range, to: 0...1)
+		let brightness = rawBrightness.clamped(to: range).mapped(from: range, to: 0...1)
 		PdBase.send(brightness, toReceiver: "#calibrate")
 		//printDebug("calibrate min \(rangeMin) max \(rangeMax) brightness \(brightness)")
 
-		rangeBarView.min = rangeMin.mapped(from: mainViewController!.rawRange, to: 0...1)
-		rangeBarView.max = rangeMax.mapped(from: mainViewController!.rawRange, to: 0...1)
-		rangeBarView.value = raw.mapped(from: mainViewController!.rawRange, to: 0...1)
+		rangeBarView.min = rangeMin.mapped(from: Camera.rawRange, to: 0...1)
+		rangeBarView.max = rangeMax.mapped(from: Camera.rawRange, to: 0...1)
+		rangeBarView.value = rawBrightness.mapped(from: Camera.rawRange, to: 0...1)
 		if !valuesHidden {
-			rawBrightnessLabel.text = String(format: "%.2f", raw)
+			rawBrightnessLabel.text = String(format: "%.2f", rawBrightness)
 			rangeMinLabel.text = String(format: "%.2f", rangeMin)
 			rangeMaxLabel.text = String(format: "%.2f", rangeMax)
 		}
@@ -99,8 +99,8 @@ class CalibrateViewController: UIViewController {
 
 	func startCalibration() {
 		if isCalibrating {return}
-		rangeMin = mainViewController!.rawRange.upperBound
-		rangeMax = mainViewController!.rawRange.lowerBound
+		rangeMin = Camera.rawRange.upperBound
+		rangeMax = Camera.rawRange.lowerBound
 		isCalibrating = true
 		calibrateButton.setTitle(NSLocalizedString("Stop", comment: "Start button"), for: .normal)
 		calibrateButton.backgroundColor = .systemRed
@@ -149,12 +149,7 @@ class CalibrateViewController: UIViewController {
 	}
 
 	@IBAction func swapCamera(_ sender: Any) {
-		if(mainViewController!.camera?.position == .front) {
-			let _ = mainViewController!.setupCamera(position: .back)
-		}
-		else {
-			let _ = mainViewController!.setupCamera(position: .front)
-		}
+		mainViewController!.camera.swap()
 	}
 
 }

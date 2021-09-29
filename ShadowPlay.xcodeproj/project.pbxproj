@@ -22,6 +22,7 @@
 		7E56D76826D6D5FF00D69F91 /* pd in Resources */ = {isa = PBXBuildFile; fileRef = 7E56D76726D6D5FF00D69F91 /* pd */; };
 		7E82937C26F1610E00D3E39E /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E82937826F1610E00D3E39E /* SceneList.swift */; };
 		7E82937E26F174C800D3E39E /* SceneInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E82937D26F174C800D3E39E /* SceneInfoViewController.swift */; };
+		7EAD53D72700DBA900B8B162 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD53D32700DBA900B8B162 /* Camera.swift */; };
 		7EB986D826E58C40006579B1 /* AppInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7EB986D326E58C40006579B1 /* AppInfo.txt */; };
 		7EB986DC26E58C82006579B1 /* ScenesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB986D926E58C82006579B1 /* ScenesViewController.swift */; };
 		7EB986DD26E58C82006579B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB986DA26E58C82006579B1 /* SettingsViewController.swift */; };
@@ -94,6 +95,7 @@
 		7E82937626F1355100D3E39E /* de */ = {isa = PBXFileReference; lastKnownFileType = text; name = de; path = de.lproj/AppInfo.txt; sourceTree = "<group>"; };
 		7E82937826F1610E00D3E39E /* SceneList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneList.swift; sourceTree = "<group>"; };
 		7E82937D26F174C800D3E39E /* SceneInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneInfoViewController.swift; sourceTree = "<group>"; };
+		7EAD53D32700DBA900B8B162 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		7EB986D426E58C40006579B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/AppInfo.txt; sourceTree = "<group>"; };
 		7EB986D926E58C82006579B1 /* ScenesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenesViewController.swift; sourceTree = "<group>"; };
 		7EB986DA26E58C82006579B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				7E56D70326D5AC9300D69F91 /* AppDelegate.swift */,
 				7EB986E826EAAC60006579B1 /* RangeBarView.swift */,
 				7EB986DF26E59467006579B1 /* CalibrateViewController.swift */,
+				7EAD53D32700DBA900B8B162 /* Camera.swift */,
 				7E56D75B26D6496D00D69F91 /* ControlsView.swift */,
 				7E56D75D26D64F4A00D69F91 /* Qlister.swift */,
 				7E56D70526D5AC9300D69F91 /* SceneDelegate.swift */,
@@ -319,6 +322,7 @@
 				7EB986DE26E58C82006579B1 /* InfoViewController.swift in Sources */,
 				7EB986DC26E58C82006579B1 /* ScenesViewController.swift in Sources */,
 				7E56D75C26D6496D00D69F91 /* ControlsView.swift in Sources */,
+				7EAD53D72700DBA900B8B162 /* Camera.swift in Sources */,
 				7E56D71826D5C09900D69F91 /* Util.swift in Sources */,
 				7EB986E026E59467006579B1 /* CalibrateViewController.swift in Sources */,
 				7EB986DD26E58C82006579B1 /* SettingsViewController.swift in Sources */,
