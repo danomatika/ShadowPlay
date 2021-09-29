@@ -81,7 +81,7 @@ class ScenesViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if let scene = mainViewController!.sceneList.goto(index: indexPath.row) {
 			printDebug("ScenesViewController: selected \(scene.meta.name)")
-			let _ = mainViewController!.openScene(at: scene.url)
+			mainViewController!.openScene(at: scene.url)
 		}
 		dismiss(animated: true, completion: nil)
 	}

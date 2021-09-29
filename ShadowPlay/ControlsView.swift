@@ -35,19 +35,19 @@ class ControlsView : UIView, QlisterDelegate {
 
 	@IBAction func playPause(_ sender: Any) {
 		printDebug("ControlsView: playPause")
-		mainViewController?.qlister.togglePlay()
+		mainViewController?.audio.qlister.togglePlay()
 	}
 
 	@IBAction func record(_ sender: Any) {
 		printDebug("ControlsView: record")
-		mainViewController?.qlister.toggleRecord()
+		mainViewController?.audio.qlister.toggleRecord()
 	}
 
 	@IBAction func save(_ sender: Any) {
 		let file = String.timestamp() + ".txt"
 		printDebug("ControlsView: saving \(file)")
 		let url = URL.documents.appendingPathComponent(file)
-		mainViewController?.qlister.write(url)
+		mainViewController?.audio.qlister.write(url)
 		let alert = UIAlertController(
 			title: NSLocalizedString("Alert.QlisterSave.title",
 									 comment: "Qlister"),

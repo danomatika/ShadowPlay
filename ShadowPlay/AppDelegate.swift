@@ -22,15 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 
-	// fade out to avoid clicks
-	func applicationWillResignActive(_ application: UIApplication) {
-		PdBase.sendList([0, 25], toReceiver: "#volume")
-	}
-
-	// fade out to avoid clicks
-	func applicationWillEnterForeground(_ application: UIApplication) {
-		PdBase.sendList([1, 25], toReceiver: "#volume")
-	}
+//	// fade out to avoid clicks
+//	func applicationWillResignActive(_ application: UIApplication) {
+//		PdBase.sendList([0, 25], toReceiver: "#volume")
+//	}
+//
+//	// fade out to avoid clicks
+//	func applicationWillEnterForeground(_ application: UIApplication) {
+//		PdBase.sendList([1, 25], toReceiver: "#volume")
+//	}
 
 	// MARK: UISceneSession Lifecycle
 

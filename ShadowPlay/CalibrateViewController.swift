@@ -20,7 +20,6 @@ class CalibrateViewController: UIViewController {
 			labelContainer.isHidden = newValue
 		}
 	}
-	let patch = PdFile()
 
 	weak var mainViewController: MainViewController? // required!
 
@@ -56,20 +55,16 @@ class CalibrateViewController: UIViewController {
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
-		mainViewController?.muteScene()
+		mainViewController?.audio.muteScene()
 		mainViewController?.calibrateViewController = self
-		let path = AppDelegate.patchDirectory().appendingPathComponent("_calibrate").path
-		patch.open("main.pd", path: path)
-		PdBase.sendList(["on", 1], toReceiver: "#calibrate")
+		mainViewController?.audio.sendCalibrate(enable: true)
 	}
 
 	override func viewDidDisappear(_ animated: Bool) {
 		cancelCalibration()
-		PdBase.sendList(["on", 0], toReceiver: "#calibrate")
-		Thread.sleep(forTimeInterval: 0.025) // let fade finish before closing
-		self.patch.close()
+		mainViewController?.audio.sendCalibrate(enable: false)
 		mainViewController?.calibrateViewController = nil
-		mainViewController?.unmuteScene()
+		mainViewController?.audio.unmuteScene()
 	}
 
 	func update(rawBrightness: Float) {
@@ -84,7 +79,7 @@ class CalibrateViewController: UIViewController {
 
 		let range = rangeMin...rangeMax
 		let brightness = rawBrightness.clamped(to: range).mapped(from: range, to: 0...1)
-		PdBase.send(brightness, toReceiver: "#calibrate")
+		mainViewController?.audio.sendCalibrate(brightness: brightness)
 		//printDebug("calibrate min \(rangeMin) max \(rangeMax) brightness \(brightness)")
 
 		rangeBarView.min = rangeMin.mapped(from: Camera.rawRange, to: 0...1)

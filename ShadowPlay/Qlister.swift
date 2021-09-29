@@ -26,6 +26,10 @@ class Qlister {
 		return patch.open("qlister.pd", path: AppDelegate.patchDirectory().path)
 	}
 
+	func close() {
+		patch.close()
+	}
+
 	func togglePlay() {
 		isPlaying = !isPlaying
 		PdBase.sendList(["play", (isPlaying ? 1 : 0)], toReceiver: "#qlister")

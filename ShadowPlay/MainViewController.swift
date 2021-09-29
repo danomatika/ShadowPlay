@@ -13,11 +13,8 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 	var brightness: Float = 0 // normalized 0 - 1
 	var range: ClosedRange<Float> = 6...11 // default outdoor
 
+	let audio = Audio()
 	let sceneList = SceneList()
-
-	let controller = PdAudioController()
-	let patch = PdFile() //< current scene main.pd
-	let qlister = Qlister()
 
 	weak var calibrateViewController: CalibrateViewController?
 
@@ -28,7 +25,7 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 		// Do any additional setup after loading the view.
 
 		controlsView.mainViewController = self
-		qlister.delegate = controlsView
+		audio.qlister.delegate = controlsView
 
 		let defaults = UserDefaults.standard
 		range = defaults.float(forKey: "rangeMin")...defaults.float(forKey: "rangeMax")
@@ -40,36 +37,11 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 		sceneList.load()
 
 		// set up pure data
-		controller?.allowBluetooth = true
-		controller?.allowBluetoothA2DP = true
-		controller?.allowAirPlay = true
-		controller?.mixWithOthers = true
-		let sampleRate = Int32(AVAudioSession.sharedInstance().sampleRate)
-		let status = controller?.configurePlayback(withSampleRate: sampleRate,
-		                                          inputChannels: 0,
-		                                          outputChannels: 2,
-		                                          inputEnabled: false)
-		switch(status) {
-			case PdAudioError:
-				print("could not configure audio")
-			case PdAudioPropertyChanged:
-				print("some of the audio properties were changed during configuration")
-			default:
-				printDebug("audio configuration successful")
-		}
-		#if DEBUG
-		controller?.print()
-		#endif
-		PdBase.setDelegate(self)
-		PdBase.subscribe("#app")
+		audio.setup()
 		if let scene = sceneList.goto(name: "Theremin") {
-			let _ = openScene(at: scene.url)
+			openScene(at: scene.url)
 		}
-		if !qlister.open() {
-			print("could not open qlister.pd")
-		}
-		controller?.isActive = true
-		PdBase.computeAudio(true)
+		audio.start()
 
 		// camera
 		camera.delegate = self
@@ -108,14 +80,10 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 		}
 	}
 
-	func openScene(at url: URL) -> Bool {
-		if patch.isValid() {
-			muteScene()
-			Thread.sleep(forTimeInterval: 0.025) // let fade finish before closing
-			self.patch.close()
-		}
-		if !patch.open("main.pd", path: url.path) {
-			printDebug("could not open \(url.lastPathComponent) main.pd")
+	/// open audio scene main.pd patch from containing folder url,
+	/// shows error alert on failure
+	func openScene(at url: URL) {
+		if !audio.openScene(url: url) {
 			// FIXME: show alert after 2 seconds to avoid UI transitions/animations
 			let alert = UIAlertController(title: NSLocalizedString("Alert.OpenScene.title", comment: "Audio Error"),
 										  message: String(format: NSLocalizedString("Alert.OpenScene.message", comment: "Could not open scene %@"), url.lastPathComponent),
@@ -125,17 +93,7 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 				self.present(alert, animated: true, completion: nil)
 			}
-			return false
 		}
-		return true
-	}
-
-	func muteScene() {
-		PdBase.sendList([0, 25], toReceiver: "#volume") // fade out to avoid clicks
-	}
-
-	func unmuteScene() {
-		PdBase.sendList([1, 25], toReceiver: "#volume") // fade in to avoid clicks
 	}
 
 	// MARK: Actions
@@ -183,42 +141,11 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 		//printDebug("brightness \(brightness) raw \(rawBrightness)")
 		DispatchQueue.main.async {
 			self.brightness = self.brightness.mavg(brightness, windowSize: 2)
-				if !self.qlister.isPlaying {
-					PdBase.sendList([self.brightness, rawBrightness], toReceiver: "#brightness")
+				if !self.audio.qlister.isPlaying {
+					self.audio.sendScene(brightness: brightness, rawBrightness: rawBrightness)
 					self.view.backgroundColor = UIColor(white: CGFloat(self.brightness), alpha: 1)
 				}
 				self.calibrateViewController?.update(rawBrightness: rawBrightness)
-		}
-	}
-
-	// MARK: PdReceiverDelegate
-
-	func receivePrint(_ message: String!) {
-		print(message ?? "")
-	}
-
-	func receiveBang(fromSource source: String!) {
-		receivePrint("received bangfrom source: \(String(describing: source))")
-	}
-
-	func receive(_ received: Float, fromSource source: String!) {
-		receivePrint("received float: \(received) from source: \(String(describing: source))")
-	}
-
-	func receiveSymbol(_ symbol: String!, fromSource source: String!) {
-		receivePrint("received symbol: \(String(describing: symbol)) from source: \(String(describing: source))")
-	}
-
-	func receiveList(_ list: [Any]!, fromSource source: String!) {
-		receivePrint("received list: \(String(describing: list)) from source: \(String(describing: source))")
-	}
-
-	func receiveMessage(_ message: String!, withArguments arguments: [Any]!, fromSource source: String!) {
-		receivePrint("received message: \(String(describing: message)) \(String(describing: arguments)) from source: \(String(describing: source))")
-		if message == "qlister" {
-			DispatchQueue.main.async {
-				self.qlister.receiveMessage(message, withArguments: arguments)
-			}
 		}
 	}
 
