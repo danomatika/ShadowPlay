@@ -61,6 +61,14 @@ Open the Xcode project and Build/Run.
 3. Archive and distribute to App Store Connect
 4. Tag version
 
+### Localization
+
+ShadowPlay supports localization in English (Base) and German.
+
+References:
+* https://developer.apple.com/documentation/xcode/localization
+* https://www.raywenderlich.com/250-internationalizing-your-ios-app-getting-started
+
 Acknowledgments
 ---------------
 
