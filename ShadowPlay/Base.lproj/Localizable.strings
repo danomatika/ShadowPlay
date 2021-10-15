@@ -23,8 +23,8 @@
 "Alert.OpenScene.title" = "Audio Error";
 "Alert.OpenScene.message" = "Could not open scene %@.";
 
-"Alert.QlisterSave.title" = "Qlister";
-"Alert.QlisterSave.message" = "Saving %@";
+"Alert.RecordSave.title" = "Record Finished";
+"Alert.RecordSave.message" = "Saved";
 
 // buttons
 

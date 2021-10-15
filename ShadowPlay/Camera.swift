@@ -8,13 +8,30 @@
 import UIKit
 import AVKit
 
+extension UIWindow {
+
+	/// get current interface orientation taking into account orientation lock
+	static var interfaceOrientation: UIInterfaceOrientation {
+		if #available(iOS 13.0, *) {
+			// assumes single window application
+			return UIApplication.shared.windows
+				.first?
+				.windowScene?
+				.interfaceOrientation ?? .unknown
+		}
+		else {
+			return UIApplication.shared.statusBarOrientation
+		}
+	}
+}
+
 /// camera capture session delegate
 protocol CameraDelegate {
 	func camera(_ camera: Camera, didChange rawBrightness: Float)
 }
 
 /// camera capture session to read per-frame brightness level
-class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
 
 	let session = AVCaptureSession()
 	var camera: AVCaptureDevice?
@@ -23,6 +40,8 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 
 	var delegate: CameraDelegate?
 
+	private var _assetWriter: AVAssetWriter?
+	private var _assetWriterInput: AVAssetWriterInput?
 	fileprivate var _observer: Any? //< notification observer key
 
 	// set up capture session and video output, ref: https://stackoverflow.com/q/9856114
@@ -32,6 +51,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 		session.sessionPreset = .high
 		session.automaticallyConfiguresCaptureDeviceForWideColor = false
 
+		// frame output
 		let videoDataOutput = AVCaptureVideoDataOutput()
 		videoDataOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey) : kCVPixelFormatType_32BGRA]
 		videoDataOutput.alwaysDiscardsLateVideoFrames = true
@@ -43,6 +63,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 		videoDataOutput.setSampleBufferDelegate(self, queue: queue)
 		session.addOutput(videoDataOutput)
 
+		// error print
 		_observer = NotificationCenter.default.addObserver(forName: .AVCaptureSessionRuntimeError,
 											   object: self, queue: .main) { notification in
 			let error: NSError = notification.userInfo?[AVCaptureSessionErrorKey] as! NSError
@@ -122,6 +143,91 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 		return AVCaptureVideoPreviewLayer.init(session: session)
 	}
 
+	// MARK: Recording
+
+	/// starting recording to file at url, extension should be "mp4"
+	func startRecording(to url: URL) {
+
+		// create asset writer
+		let settings: [String : Any] = [
+			AVVideoCodecKey : AVVideoCodecType.h264,
+			AVVideoWidthKey : camera!.activeFormat.formatDescription.dimensions.width,
+			AVVideoHeightKey : camera!.activeFormat.formatDescription.dimensions.height
+		]
+		_assetWriterInput = AVAssetWriterInput(mediaType: .video,
+		                                       outputSettings: settings)
+		_assetWriterInput?.expectsMediaDataInRealTime = true
+
+		// captureOutput callback always returns buffer in landscape,
+		// so set transform metadata to try to keep relative orientation
+		// instead of rotating pixel buffer itself
+		var angle: CGFloat = 0
+		switch(UIWindow.interfaceOrientation) {
+			case .portrait: angle = .pi/2
+			case .landscapeLeft: angle = .pi
+			case .portraitUpsideDown: angle = -.pi/2
+			case .landscapeRight: angle = -.pi
+			default: break;
+		}
+		_assetWriterInput?.transform = CGAffineTransform(rotationAngle: angle)
+
+		// open url for writing
+		do {
+			_assetWriter = try AVAssetWriter(url: url, fileType: .mp4)
+			if _assetWriter!.canAdd(_assetWriterInput!) {
+				_assetWriter?.add(_assetWriterInput!)
+			}
+			else {
+				print("Camera: could not add asset writer input")
+				_assetWriter = nil
+				_assetWriterInput = nil
+				return
+			}
+		}
+		catch let error {
+			print("Camera: could not start recording: \(error)")
+			_assetWriter = nil
+			_assetWriterInput = nil
+			return
+		}
+		printDebug("Camera: started recording to \(url)")
+	}
+
+	/// finish recording
+	func stopRecording() {
+		guard _assetWriter != nil else {return}
+		_assetWriterInput?.markAsFinished()
+		_assetWriter?.finishWriting(completionHandler: {
+			printDebug("Camera: completed recording to \(self._assetWriter!.outputURL)")
+			self._assetWriter = nil
+			self._assetWriterInput = nil
+		})
+	}
+
+	/// returns true if recording
+	var isRecording: Bool {
+		get {return _assetWriter != nil}
+	}
+
+	/// write frame to recording, if open
+	func _write(sampleBuffer: CMSampleBuffer) {
+		guard _assetWriter != nil else {return}
+		if _assetWriter?.status == .unknown {
+			if _assetWriter!.startWriting() {
+				let presentationTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+				_assetWriter?.startSession(atSourceTime: presentationTime)
+			}
+			else {
+				print("Camera: error writing initial frame")
+			}
+		}
+		if _assetWriter?.status == .writing {
+			if _assetWriterInput!.isReadyForMoreMediaData {
+				_assetWriterInput?.append(sampleBuffer)
+			}
+		}
+	}
+
 	// MARK: AVCaptureVideoDataOutputSampleBufferDelegate
 
 	/// read brightness level from frame EXIF metadata,
@@ -133,6 +239,13 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 			self.rawBrightness = rawBrightness.floatValue
 			self.delegate?.camera(self, didChange: self.rawBrightness)
 		}
+		self._write(sampleBuffer: sampleBuffer)
+	}
+
+	// MARK: AVCaptureFileOutputRecordingDelegate
+
+	func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+		printDebug("Camera: finished recording to \(outputFileURL), error: \(error?.localizedDescription ?? "none")")
 	}
 
 }

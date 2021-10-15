@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,24 +24,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWh-Ku-z50">
-                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="100"/>
                                                 <state key="normal" image="record.circle.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="record:" destination="rLL-cK-hcX" eventType="touchUpInside" id="FuN-mn-HlQ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQ5-ly-4XF">
-                                                <rect key="frame" x="111.5" y="0.0" width="112" height="100"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="100"/>
                                                 <state key="normal" image="play.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="playPause:" destination="rLL-cK-hcX" eventType="touchUpInside" id="yM3-tR-nBn"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YN-eL-Obe">
-                                                <rect key="frame" x="223.5" y="0.0" width="111.5" height="100"/>
-                                                <state key="normal" image="doc.fill.badge.plus" catalog="system"/>
-                                                <connections>
-                                                    <action selector="save:" destination="rLL-cK-hcX" eventType="touchUpInside" id="bj1-Yt-B34"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -59,7 +52,6 @@
                                 <connections>
                                     <outlet property="playPauseButton" destination="jQ5-ly-4XF" id="MiC-lf-dNS"/>
                                     <outlet property="recordButton" destination="fWh-Ku-z50" id="kdF-e2-dnG"/>
-                                    <outlet property="saveButton" destination="6YN-eL-Obe" id="0bN-nc-TbC"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJA-V6-U7v">
@@ -120,7 +112,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="SceneCell" textLabel="gYJ-tZ-s5h" detailTextLabel="BUB-d5-tNg" style="IBUITableViewCellStyleSubtitle" id="Ulj-hz-lOR">
-                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ulj-hz-lOR" id="Jnm-hl-BL4">
                                     <rect key="frame" x="0.0" y="0.0" width="338.5" height="43.5"/>
@@ -326,14 +318,14 @@
                             <tableViewSection headerTitle="Display" id="pCQ-HY-D8F">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bul-No-cCU">
-                                        <rect key="frame" x="0.0" y="24.5" width="375" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bul-No-cCU" id="4xR-ho-Cfc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep screen awake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg6-DJ-1VJ">
-                                                    <rect key="frame" x="16" y="11" width="286" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="286" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="WfX-fi-gm9"/>
                                                     </constraints>
@@ -342,7 +334,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U6I-1J-EZM">
-                                                    <rect key="frame" x="310" y="6" width="51" height="32"/>
+                                                    <rect key="frame" x="310" y="6" width="51" height="31.5"/>
                                                     <connections>
                                                         <action selector="keepAwakeChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="fsw-Oj-dAc"/>
                                                     </connections>
@@ -365,14 +357,14 @@
                             <tableViewSection headerTitle="Advanced" id="RTW-VH-uGg" userLabel="Advanced">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="L5j-IB-5qk">
-                                        <rect key="frame" x="0.0" y="117.16666828502309" width="375" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="155" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L5j-IB-5qk" id="yT5-aE-v5H">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show calibration values" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3f-iI-RO6" userLabel="Show calibration values">
-                                                    <rect key="frame" x="16" y="11" width="286" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="286" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="dQx-er-Zyt"/>
                                                     </constraints>
@@ -381,7 +373,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="smh-rx-F1f">
-                                                    <rect key="frame" x="310" y="6" width="51" height="32"/>
+                                                    <rect key="frame" x="310" y="6" width="51" height="31.5"/>
                                                     <connections>
                                                         <action selector="showCalibrationValuesChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="awR-vs-zsJ"/>
                                                     </connections>
@@ -400,14 +392,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bbc-kY-LuO">
-                                        <rect key="frame" x="0.0" y="160.83333622325551" width="375" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="198.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bbc-kY-LuO" id="0IY-Cg-ZbJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show qlist record controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7X-F9-xlJ" userLabel="Show calibration values">
-                                                    <rect key="frame" x="16" y="11" width="286" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="286" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="PzI-tw-WRw"/>
                                                     </constraints>
@@ -416,7 +408,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tg1-L0-c0q">
-                                                    <rect key="frame" x="310" y="6" width="51" height="32"/>
+                                                    <rect key="frame" x="310" y="6" width="51" height="31.5"/>
                                                     <connections>
                                                         <action selector="showRecordControlsChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="T1b-q5-Qhf"/>
                                                     </connections>
@@ -1003,7 +995,6 @@ Scene contributions by Sofy Yuditskaya and Damian Stewart.</string>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.triangle.2.circlepath.camera" catalog="system" width="128" height="94"/>
-        <image name="doc.fill.badge.plus" catalog="system" width="122" height="128"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="music.note" catalog="system" width="97" height="128"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
@@ -1033,7 +1024,7 @@ Scene contributions by Sofy Yuditskaya and Damian Stewart.</string>
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

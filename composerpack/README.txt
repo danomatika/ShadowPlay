@@ -48,9 +48,9 @@ Test Data
 
 Sample test data is available as qlist text files. The `qlister-play.pd` patch is provided for sample playback to the #brightness receiver.
 
-If you have the app installed on your device, you can also record your own qlists. In ... -> Settings, turn on "Show qlist record controls" to show the record, play, & save buttons on the main view.
+If you have the app installed on your device, you can also record your own qlists. In ... -> Settings, turn on "Show qlist record controls" to show the record & play buttons on the main view.
 
-The current qlist can be played back after recording and optionally saved to a timestamped text file in the ShadowPlay Documents directory. You can access the saved qlists either via the iOS Files app or Finder/iTunes file sharing and replay them using `qlister-play.pd`.
+The current qlist can be played back after recording to a timestamped text file in the ShadowPlay Documents directory. You can access the saved qlists either via the iOS Files app or Finder/iTunes file sharing and replay them using `qlister-play.pd`.
 
 Running on Device
 -----------------

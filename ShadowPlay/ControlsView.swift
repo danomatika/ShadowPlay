@@ -16,19 +16,20 @@ class ControlsView : UIView, QlisterDelegate {
 		set {
 			playPauseButton.isHidden = newValue
 			recordButton.isHidden = newValue
-			saveButton.isHidden = newValue
 		}
 	}
 
 	@IBOutlet weak var playPauseButton: UIButton!
 	@IBOutlet weak var recordButton: UIButton!
-	@IBOutlet weak var saveButton: UIButton!
 
 	weak var mainViewController: MainViewController?
+
+	private var _timestamp: String = "" //< current timestamp when recording
 
 	override func awakeFromNib() {
 		let defaults = UserDefaults.standard
 		recordControlsHidden = !defaults.bool(forKey: "showRecordControls")
+		playPauseButton.isEnabled = false // not enabled until something is recorded
 	}
 
 	// MARK: Actions
@@ -41,23 +42,31 @@ class ControlsView : UIView, QlisterDelegate {
 	@IBAction func record(_ sender: Any) {
 		printDebug("ControlsView: record")
 		mainViewController?.audio.qlister.toggleRecord()
-	}
-
-	@IBAction func save(_ sender: Any) {
-		let file = String.timestamp() + ".txt"
-		printDebug("ControlsView: saving \(file)")
-		let url = URL.documents.appendingPathComponent(file)
-		mainViewController?.audio.qlister.write(url)
-		let alert = UIAlertController(
-			title: NSLocalizedString("Alert.QlisterSave.title",
-									 comment: "Qlister"),
-			message: String(format: NSLocalizedString("Alert.QlisterSave.message",
-									 comment: "Saving %@"), file),
-			preferredStyle: .alert
-		)
-		mainViewController?.show(alert, sender: nil)
-		DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-			alert.dismiss(animated: true, completion: nil)
+		if mainViewController?.audio.qlister.isRecording ?? false {
+			// start recording
+			_timestamp = String.timestamp()
+			let file = _timestamp + ".mp4"
+			let url = URL.documents.appendingPathComponent(file)
+			mainViewController?.camera.startRecording(to: url)
+		}
+		else {
+			// stop recording
+			mainViewController?.camera.stopRecording()
+			let files = [_timestamp + ".txt", _timestamp + ".mp4"]
+			printDebug("ControlsView: saving \(files.joined(separator: " "))")
+			let url = URL.documents.appendingPathComponent(files[0])
+			mainViewController?.audio.qlister.write(url)
+			let title = NSLocalizedString("Alert.RecordSave.title", comment: "Record Finished")
+			let message = NSLocalizedString("Alert.RecordSave.message", comment: "Saved")
+			let alert = UIAlertController(
+				title: title,
+				message: message + "\n" + files.joined(separator: "\n"),
+				preferredStyle: .alert
+			)
+			mainViewController?.show(alert, sender: nil)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+				alert.dismiss(animated: true, completion: nil)
+			}
 		}
 	}
 
@@ -79,14 +88,12 @@ class ControlsView : UIView, QlisterDelegate {
 		printDebug("ControlsView: start recording")
 		recordButton.tintColor = .systemRed
 		playPauseButton.isEnabled = false
-		saveButton.isEnabled = false
 	}
 
 	func qlisterDidStopRecording(_ qlister: Qlister) {
 		printDebug("ControlsView: stop recording")
 		recordButton.tintColor = self.tintColor
 		playPauseButton.isEnabled = true
-		saveButton.isEnabled = true
 	}
 
 }

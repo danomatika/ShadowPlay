@@ -35,9 +35,9 @@ Standardmäßig werden der aktuelle Helligkeitswert und die Bereiche Min. und Ma
 
 ### Qlist Record Controls
 
-Für die Entwicklung von ShadowPlay-Audioszenen werden Sensordaten aufgenommen, die Events der  Helligkeitsaktualisierung werden in einer Pure Data qlist Textdatei gespeichert. Aktiviere "Show qlist record controls", um die Aufnahme-, Wiedergabe- und Speicherknöpfe in der Hauptansicht anzuzeigen.
+Für die Entwicklung von ShadowPlay-Audioszenen werden Sensordaten aufgenommen, die Events der  Helligkeitsaktualisierung werden in einer Pure Data qlist Textdatei gespeichert. Aktiviere "Show qlist record controls", um die Aufnahme- und Wiedergabeknöpfe in der Hauptansicht anzuzeigen.
 
-Die aktuelle qlist kann auch nach der Aufnahme abgespielt und optional in einer Textdatei mit Zeitstempel im ShadowPlay-Dokumentenverzeichnis gespeichert werden. Du kannst auf die gespeicherte qlist entweder über die iOS Dateien-App oder Finder/iTunes File Sharing zugreifen und sie auf Deinem Desktop-Computer wiedergeben (siehe Eigene Szenen erstellen).
+Die aktuelle qlist kann auch nach der Aufnahme in eine Textdatei mit Zeitstempel im ShadowPlay-Dokumentenverzeichnis wiedergegeben werden. Du kannst auf die gespeicherte qlist entweder über die iOS Dateien-App oder Finder/iTunes File Sharing zugreifen und sie auf Deinem Desktop-Computer wiedergeben (siehe Eigene Szenen erstellen).
 
 Eigene Scenes erstellen
 -----------------------
