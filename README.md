@@ -56,7 +56,7 @@ Open the Xcode project and Build/Run.
 
 ### Release steps
 
-1. Update version in Xcode project and changelog
+1. Update version in Xcode project, AppInfo.txt (+ localizations), and changelog
 2. Update changelog with relevant changes
 3. Archive and distribute to App Store Connect
 4. Tag version

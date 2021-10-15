@@ -2,7 +2,7 @@ ShadowPlay is an exploration of the architecture and light in outdoor spaces thr
 
 http://danomatika.com/code/shadowplay
 
-Version 1.0.0
+Version 1.1.0
 
 Dan Wilcox 2021  
 danomatika.com

@@ -1,3 +1,20 @@
+1.1.0: 15 Oct 2021
+
+* added optional video recording (no audio)
+* added camera position to user defaults
+* added settings button to delete current recording files
+* added missing scene info view label text localizations
+
+* fixed missing Files app support
+* fixed calibrate scene not always playing
+* fixed play button enabled on load when no qlist has been recorded
+
+* save qlist on record end instead of using separate save button
+* disallow settings view cell selection
+
+* refactored pure data handling into Audio class
+* refactored camera handling into Camera class
+
 1.0.0: 15 Sep 2021
 
 Seasons of Media Arts release
@@ -36,7 +53,7 @@ beta
 * added 25 ms audio fade on scene transition and app background transition
 * added sequence scene
 * added scene contributions by Sofy Yuditskaya and Damian Stewart
-* added use defaults handling and settings to:
+* added user defaults handling and settings to:
   - keep screen awake
   - show calibration values
   - show qlist record controls
