@@ -12,7 +12,7 @@
 "BUB-d5-tNg.text" = "Einzelheiten";
 
 /* Class = "UILabel"; text = "Show qlist record controls"; ObjectID = "A7X-F9-xlJ"; */
-"A7X-F9-xlJ.text" = "Qlist Kontrollen anzeigen";
+"A7X-F9-xlJ.text" = "Qlist Aufnahme Kontrollen anzeigen";
 
 /* Class = "UILabel"; text = "-12.34"; ObjectID = "GUF-h7-yRQ"; */
 "GUF-h7-yRQ.text" = "-12,34";
@@ -93,6 +93,18 @@
 
 /* Class = "UITableViewSection"; headerTitle = "Advanced"; ObjectID = "RTW-VH-uGg"; */
 "RTW-VH-uGg.headerTitle" = "Erweitert";
+
+/* Class = "UITableViewSection"; headerTitle = "Recording"; ObjectID = "z12-6a-OaX"; */
+"z12-6a-OaX.headerTitle" = "Aufnahme";
+
+/* Class = "UILabel"; text = "Record video (no audio)"; ObjectID = "0q6-cx-DOd"; */
+"0q6-cx-DOd.text" = "Video aufnehmen (kein Ton)";
+
+/* Class = "UILabel"; text = "Delete current recordings"; ObjectID = "CM4-N6-N6B"; */
+"CM4-N6-N6B.text" = "Aktuelle Aufnahmen löschen";
+
+/* Class = "UIButton"; normalTitle = "Delete All"; ObjectID = "cJ0-He-Ys1"; */
+"cJ0-He-Ys1.normalTitle" = "Löschen";
 
 /* Class = "UILabel; text = "Author"; ObjectID = "cKI-Ey-nR9"; */
 "cKI-Ey-nR9.text" = "Autor";

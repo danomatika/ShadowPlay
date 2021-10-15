@@ -465,6 +465,44 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UY4-tn-RxP">
+                                        <rect key="frame" x="0.0" y="352.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UY4-tn-RxP" id="Rwc-vq-CYf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete current recordings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CM4-N6-N6B" userLabel="Show calibration values">
+                                                    <rect key="frame" x="16" y="11" width="175.5" height="18.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="Uth-B1-EeA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJ0-He-Ys1">
+                                                    <rect key="frame" x="299" y="6.5" width="66" height="31"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Delete"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                                                    <connections>
+                                                        <action selector="deleteAll" destination="eg1-F9-zpj" eventType="touchUpInside" id="4IJ-Gx-sLD"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cJ0-He-Ys1" firstAttribute="centerY" secondItem="Rwc-vq-CYf" secondAttribute="centerY" id="DzT-Yk-XtG"/>
+                                                <constraint firstItem="cJ0-He-Ys1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CM4-N6-N6B" secondAttribute="trailing" constant="8" symbolic="YES" id="IyX-qa-YJx"/>
+                                                <constraint firstItem="CM4-N6-N6B" firstAttribute="leading" secondItem="Rwc-vq-CYf" secondAttribute="leadingMargin" id="VBy-Hy-YvB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CM4-N6-N6B" secondAttribute="bottom" constant="3.6666679382324219" id="Vga-sM-3y6"/>
+                                                <constraint firstItem="CM4-N6-N6B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rwc-vq-CYf" secondAttribute="leadingMargin" id="bZt-FY-MvN"/>
+                                                <constraint firstAttribute="trailing" secondItem="cJ0-He-Ys1" secondAttribute="trailing" constant="10" id="sTl-Mc-RP0"/>
+                                                <constraint firstItem="CM4-N6-N6B" firstAttribute="top" secondItem="Rwc-vq-CYf" secondAttribute="topMargin" id="x7h-0l-0Df"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1062,6 +1100,9 @@ Scene contributions by Sofy Yuditskaya and Damian Stewart.</string>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

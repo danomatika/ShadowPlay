@@ -18,6 +18,8 @@
 
 "Settings" = "Einstellungen";
 
+"Delete" = "Löschen";
+
 // alerts
 
 "Alert.OpenScene.title" = "Audio Fehler";

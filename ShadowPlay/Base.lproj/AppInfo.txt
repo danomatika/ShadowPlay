@@ -35,7 +35,7 @@ By default, the current brightness value and range min & max are shown via the h
 
 ### Qlist Record Controls
 
-For ShadowPlay audio scene development, a built in sensor data recorder is included which saves brightness update events into a Pure Data qlist text file. Turn on "Show record controls" to show the record & play buttons on the main view.
+For ShadowPlay audio scene development, a built in sensor data recorder is included which saves brightness update events into a Pure Data qlist text file. Turn on "Show qlist record controls" to show the record & play buttons on the main view.
 
 The current qlist can also be played back after recording to a timestamped text file in the ShadowPlay Documents directory. You can access the saved qlists either via the iOS Files app or Finder/iTunes file sharing and replay them on your desktop computer when composing (see Making Your Own Scenes).
 

@@ -58,4 +58,51 @@ class SettingsViewController: UITableViewController {
 		UserDefaults.standard.set(recordVideoSwitch.isOn, forKey: "recordVideo")
 	}
 
+	@IBAction func deleteAll() {
+		let title = NSLocalizedString("Alert.RecordDelete.title", comment: "Delete Recordings")
+		let message = NSLocalizedString("Alert.RecordDelete.message", comment: "Delete all recordings in Documents?")
+		let alert = UIAlertController(
+			title: title,
+			message: message,
+			preferredStyle: .alert
+		)
+		alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Delete"), style: .destructive, handler: { action in
+			self._deleteAllRecordings()
+		}))
+		mainViewController?.show(alert, sender: nil)
+	}
+
+	// MARK: Private
+
+	/// delete all recordings in the Documents directory
+	private func _deleteAllRecordings() {
+		let manager = FileManager.default
+		var contents: [URL] = []
+		var count: UInt = 0
+		do {
+			try contents = manager.contentsOfDirectory(at: URL.documents,
+													   includingPropertiesForKeys: nil,
+													   options: [.skipsHiddenFiles])
+		}
+		catch {
+			print("Settings: could not read Documents directory: \(error)")
+		}
+		for url in contents {
+			if url.isFileURL {
+				if url.pathExtension == "txt" || url.pathExtension == "mp4" {
+					do {
+						try manager.removeItem(at: url)
+						count += 1
+						printDebug("Settings: removed \(url.lastPathComponent)")
+					}
+					catch {
+						print("Settings: unable to remove \(url.lastPathComponent)")
+					}
+				}
+			}
+		}
+		printDebug("Settings: removed \(count) recordings from Documents directory")
+	}
+
 }

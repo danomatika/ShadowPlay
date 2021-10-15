@@ -210,7 +210,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureF
 	}
 
 	/// write frame to recording, if open
-	func _write(sampleBuffer: CMSampleBuffer) {
+	private func _write(sampleBuffer: CMSampleBuffer) {
 		guard _assetWriter != nil else {return}
 		if _assetWriter?.status == .unknown {
 			if _assetWriter!.startWriting() {

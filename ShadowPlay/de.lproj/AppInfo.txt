@@ -33,9 +33,9 @@ Der Zugriff auf die Kamera für die Live-Helligkeitserkennung erfordert, dass di
 
 Standardmäßig werden der aktuelle Helligkeitswert und die Bereiche Min. und Max. über die horizontale Bereichsleiste in der Kalibrierungsansicht angezeigt. Um die tatsächlichen numerischen Werte zu sehen, schalten Sie die Einstellung "Kalibrierungswerte anzeigen" ein.
 
-### Qlist Record Controls
+### Qlist Aufnahme Kontrollen
 
-Für die Entwicklung von ShadowPlay-Audioszenen werden Sensordaten aufgenommen, die Events der Helligkeitsaktualisierung werden in einer Pure Data qlist Textdatei gespeichert. Aktiviere "Show qlist record controls", um die Aufnahme- und Wiedergabeknöpfe in der Hauptansicht anzuzeigen.
+Für die Entwicklung von ShadowPlay-Audioszenen werden Sensordaten aufgenommen, die Events der Helligkeitsaktualisierung werden in einer Pure Data qlist Textdatei gespeichert. Aktiviere "Qlist Aufnahme Kontrollen anzeigen", um die Aufnahme- und Wiedergabeknöpfe in der Hauptansicht anzuzeigen.
 
 Die aktuelle qlist kann auch nach der Aufnahme in eine Textdatei mit Zeitstempel im ShadowPlay-Dokumentenverzeichnis wiedergegeben werden. Du kannst auf die gespeicherte qlist entweder über die iOS Dateien-App oder Finder/iTunes File Sharing zugreifen und sie auf Deinem Desktop-Computer wiedergeben (siehe Eigene Szenen erstellen).
 

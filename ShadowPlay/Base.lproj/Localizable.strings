@@ -18,6 +18,8 @@
 
 "Settings" = "Settings";
 
+"Delete" = "Delete";
+
 // alerts
 
 "Alert.OpenScene.title" = "Audio Error";
@@ -25,6 +27,9 @@
 
 "Alert.RecordSave.title" = "Record Finished";
 "Alert.RecordSave.message" = "Saved";
+
+"Alert.RecordDelete.title" = "Delete Recordings";
+"Alert.RecordDelete.message" = "Delete all qlist txt and video mp4 recordings in Documents?";
 
 // buttons
 
