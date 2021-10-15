@@ -45,14 +45,19 @@ class ControlsView : UIView, QlisterDelegate {
 		if mainViewController?.audio.qlister.isRecording ?? false {
 			// start recording
 			_timestamp = String.timestamp()
-			let file = _timestamp + ".mp4"
-			let url = URL.documents.appendingPathComponent(file)
-			mainViewController?.camera.startRecording(to: url)
+			if UserDefaults.standard.bool(forKey: "recordVideo") {
+				let file = _timestamp + ".mp4"
+				let url = URL.documents.appendingPathComponent(file)
+				mainViewController?.camera.startRecording(to: url)
+			}
 		}
 		else {
 			// stop recording
-			mainViewController?.camera.stopRecording()
-			let files = [_timestamp + ".txt", _timestamp + ".mp4"]
+			var files = [_timestamp + ".txt"]
+			if mainViewController?.camera.isRecording ?? false {
+				files.append(_timestamp + ".mp4")
+				mainViewController?.camera.stopRecording()
+			}
 			printDebug("ControlsView: saving \(files.joined(separator: " "))")
 			let url = URL.documents.appendingPathComponent(files[0])
 			mainViewController?.audio.qlister.write(url)

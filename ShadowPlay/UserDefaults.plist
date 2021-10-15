@@ -16,5 +16,7 @@
 	<true/>
 	<key>cameraPosition</key>
 	<integer>1</integer>
+	<key>recordVideo</key>
+	<false/>
 </dict>
 </plist>

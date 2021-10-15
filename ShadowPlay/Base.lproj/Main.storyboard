@@ -428,6 +428,45 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Recording" id="z12-6a-OaX" userLabel="Recording">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jnC-8t-Ucd">
+                                        <rect key="frame" x="0.0" y="309" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jnC-8t-Ucd" id="5br-vv-8U8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record video (no audio)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q6-cx-DOd" userLabel="Show calibration values">
+                                                    <rect key="frame" x="16" y="11" width="286" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="egt-TF-2aA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7xu-kT-1kp">
+                                                    <rect key="frame" x="310" y="6" width="51" height="31.5"/>
+                                                    <connections>
+                                                        <action selector="recordVideoChanged:" destination="eg1-F9-zpj" eventType="valueChanged" id="FmT-qu-xWg"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0q6-cx-DOd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5br-vv-8U8" secondAttribute="leadingMargin" id="C9p-PZ-dcJ"/>
+                                                <constraint firstItem="7xu-kT-1kp" firstAttribute="trailing" secondItem="5br-vv-8U8" secondAttribute="trailingMargin" id="Wc9-wR-GHa"/>
+                                                <constraint firstItem="7xu-kT-1kp" firstAttribute="top" secondItem="5br-vv-8U8" secondAttribute="topMargin" constant="-5" id="ZqD-Nb-ny2"/>
+                                                <constraint firstItem="0q6-cx-DOd" firstAttribute="top" secondItem="5br-vv-8U8" secondAttribute="topMargin" id="dKe-DS-5pY"/>
+                                                <constraint firstItem="0q6-cx-DOd" firstAttribute="leading" secondItem="5br-vv-8U8" secondAttribute="leadingMargin" id="lMa-Do-SQa"/>
+                                                <constraint firstItem="7xu-kT-1kp" firstAttribute="centerY" secondItem="5br-vv-8U8" secondAttribute="centerY" id="lmU-bl-z8I"/>
+                                                <constraint firstItem="7xu-kT-1kp" firstAttribute="leading" secondItem="0q6-cx-DOd" secondAttribute="trailing" constant="8" symbolic="YES" id="qVq-mU-OqQ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0q6-cx-DOd" secondAttribute="bottom" constant="3.6666679382324219" id="sRV-Ex-bwe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="eg1-F9-zpj" id="JOH-Jx-mL9"/>
@@ -443,6 +482,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="keepAwakeSwitch" destination="U6I-1J-EZM" id="jQD-ge-cVw"/>
+                        <outlet property="recordVideoSwitch" destination="7xu-kT-1kp" id="7H1-j2-R75"/>
                         <outlet property="showCalibrationValuesSwitch" destination="smh-rx-F1f" id="PIF-us-g4T"/>
                         <outlet property="showRecordControlsSwitch" destination="Tg1-L0-c0q" id="42e-Vt-sFA"/>
                     </connections>

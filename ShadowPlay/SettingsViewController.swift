@@ -16,6 +16,7 @@ class SettingsViewController: UITableViewController {
 	@IBOutlet weak var keepAwakeSwitch: UISwitch!
 	@IBOutlet weak var showCalibrationValuesSwitch: UISwitch!
 	@IBOutlet weak var showRecordControlsSwitch: UISwitch!
+	@IBOutlet weak var recordVideoSwitch: UISwitch!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -27,6 +28,9 @@ class SettingsViewController: UITableViewController {
 		keepAwakeSwitch.isOn = defaults.bool(forKey: "keepAwake")
 		showCalibrationValuesSwitch.isOn = defaults.bool(forKey: "showCalibrationValues")
 		showRecordControlsSwitch.isOn = defaults.bool(forKey: "showRecordControls")
+		recordVideoSwitch.isOn = defaults.bool(forKey: "recordVideo")
+
+		recordVideoSwitch.isEnabled = showRecordControlsSwitch.isOn
 	}
 
 	// MARK: Actions
@@ -47,6 +51,11 @@ class SettingsViewController: UITableViewController {
 	@IBAction func showRecordControlsChanged(_ sender: Any) {
 		UserDefaults.standard.set(showRecordControlsSwitch.isOn, forKey: "showRecordControls")
 		mainViewController?.controlsView.recordControlsHidden = !showRecordControlsSwitch.isOn
+		recordVideoSwitch.isEnabled = showRecordControlsSwitch.isOn
+	}
+
+	@IBAction func recordVideoChanged(_ sender: Any) {
+		UserDefaults.standard.set(recordVideoSwitch.isOn, forKey: "recordVideo")
 	}
 
 }

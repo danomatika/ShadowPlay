@@ -39,6 +39,10 @@ For ShadowPlay audio scene development, a built in sensor data recorder is inclu
 
 The current qlist can also be played back after recording to a timestamped text file in the ShadowPlay Documents directory. You can access the saved qlists either via the iOS Files app or Finder/iTunes file sharing and replay them on your desktop computer when composing (see Making Your Own Scenes).
 
+### Record Video
+
+A silent mp4 video file can be optionally recorded along with the qlist. This allows for syncing recorded brightness update events to video on your desktop computer.
+
 Making Your Own Scenes
 ----------------------
 
