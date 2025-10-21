@@ -1,3 +1,17 @@
+1.2.0: 21 Oct 2025
+
+* updated to libpd 0.15.0 (pd 0.55-2)
+
+* fixed warning by starting capture session on background thread
+* fixed warning by adding explicit system blue accent color
+* fixed deprecated camera icon name
+
+* added wav recorder to composerpack qlister-play
+
+* updated for project xcode 16
+* updated stereooutput~ in all scenes for recording
+* prefer https links
+
 1.1.0: 15 Oct 2021
 
 * added optional video recording (no audio)
