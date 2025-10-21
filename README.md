@@ -3,7 +3,7 @@ ShadowPlay
 
 ![ShadowPlay app icon](media/shadowplay-icon-rounded.png)
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2021
+Copyright (c) [Dan Wilcox](danomatika.com) 2021-2025
 
 BSD Simplified License.
 
@@ -74,7 +74,7 @@ Acknowledgments
 
 Sound scene contributions by:
 * Sofy Yuditskaya (New York, USA) <https://www.yuditskaya.com>
-* Damian Stewart (Vienna, AT) <http://damianstewart.com>
+* Damian Stewart (Vienna, AT) <https://damianstewart.com>
 
 Supported through the UNESCO City of Media Arts Karlsruhe as well as through the City of Karlsruhe. / Unterstützt durch die UNESCO City of Media Arts Karlsruhe sowie durch die Stadt Karlsruhe.
 
