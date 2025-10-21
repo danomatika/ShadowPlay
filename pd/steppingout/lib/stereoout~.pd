@@ -12,6 +12,8 @@
 #X obj 109 80 hip~ 5;
 #X text 170 80 no dc please;
 #X text 179 181 volume fading for transitions;
+#X obj 110 260 throw~ left;
+#X obj 202 260 throw~ right;
 #X connect 1 0 2 0;
 #X connect 2 0 3 1;
 #X connect 2 0 6 1;
@@ -22,4 +24,6 @@
 #X connect 7 0 9 0;
 #X connect 8 0 10 0;
 #X connect 9 0 3 0;
+#X connect 9 0 13 0;
 #X connect 10 0 6 0;
+#X connect 10 0 14 0;

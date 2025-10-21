@@ -1,4 +1,4 @@
-#N canvas 0 25 449 287 12;
+#N canvas 0 25 735 270 12;
 #X obj 55 224 stereoout~;
 #X obj 55 104 osc~ 440;
 #X obj 122 104 noise~;
@@ -11,6 +11,12 @@
 #X text 23 26 stereo dac~ wrapper with global volume control;
 #X text 45 66 scene audio out;
 #X text 277 108 app volume control;
+#X obj 545 154 catch~ left;
+#X obj 545 185 catch~ right;
+#X obj 478 220 writesf~ 2;
+#X msg 478 112 open recording.wav \, start;
+#X msg 497 152 stop;
+#X text 473 62 also throws audio for recording;
 #X connect 1 0 4 0;
 #X connect 2 0 5 0;
 #X connect 3 0 0 1;
@@ -18,3 +24,7 @@
 #X connect 5 0 3 0;
 #X connect 7 0 6 0;
 #X connect 8 0 6 0;
+#X connect 12 0 14 0;
+#X connect 13 0 14 1;
+#X connect 15 0 14 0;
+#X connect 16 0 14 0;
