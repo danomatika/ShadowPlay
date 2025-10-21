@@ -108,7 +108,9 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureF
 			return
 		}
 		if wasRunning {
-			session.startRunning()
+			DispatchQueue.global().async {
+				self.session.startRunning()
+			}
 		}
 		return
 	}
