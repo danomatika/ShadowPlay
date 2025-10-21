@@ -127,7 +127,9 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureF
 
 	/// start the capture session
 	func start() {
-		session.startRunning()
+		DispatchQueue.global().async {
+			self.session.startRunning()
+		}
 	}
 
 	/// stop the capture session
