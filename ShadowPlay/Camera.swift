@@ -12,16 +12,11 @@ extension UIWindow {
 
 	/// get current interface orientation taking into account orientation lock
 	static var interfaceOrientation: UIInterfaceOrientation {
-		if #available(iOS 13.0, *) {
-			// assumes single window application
-			return UIApplication.shared.windows
-				.first?
-				.windowScene?
-				.interfaceOrientation ?? .unknown
-		}
-		else {
-			return UIApplication.shared.statusBarOrientation
-		}
+		// assumes single window application
+		return UIApplication.shared.windows
+			.first?
+			.windowScene?
+			.interfaceOrientation ?? .unknown
 	}
 }
 

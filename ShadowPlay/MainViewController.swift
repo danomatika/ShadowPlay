@@ -122,12 +122,9 @@ class MainViewController: UIViewController, PdReceiverDelegate, CameraDelegate {
 			self.performSegue(withIdentifier: "ShowSettings", sender: self)
 			alert.dismiss(animated: true, completion: nil)
 		})
-		if #available(iOS 13.0, *) {
-			// add system icons on iOS 13+
-			calibrateAction.setValue(UIImage.init(systemName: "lightbulb"), forKey: "image")
-			infoAction.setValue(UIImage.init(systemName: "info.circle"), forKey: "image")
-			settingsAction.setValue(UIImage.init(systemName: "gear"), forKey: "image")
-		}
+		calibrateAction.setValue(UIImage.init(systemName: "lightbulb"), forKey: "image")
+		infoAction.setValue(UIImage.init(systemName: "info.circle"), forKey: "image")
+		settingsAction.setValue(UIImage.init(systemName: "gear"), forKey: "image")
 		alert.addAction(cancelAction)
 		alert.addAction(calibrateAction)
 		alert.addAction(infoAction)
