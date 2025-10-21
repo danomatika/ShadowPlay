@@ -635,7 +635,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cs6-pD-j8E">
                                 <rect key="frame" x="16" y="17" width="74" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="arrow.trianglehead.2.clockwise.rotate.90.camera" catalog="system"/>
+                                <state key="normal" image="arrow.triangle.2.circlepath.camera" catalog="system"/>
                                 <connections>
                                     <action selector="swapCamera:" destination="yki-At-WCu" eventType="touchUpInside" id="l6o-Tg-2Ak"/>
                                 </connections>
@@ -1072,7 +1072,7 @@ Scene contributions by Sofy Yuditskaya and Damian Stewart.</string>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="110" height="128"/>
-        <image name="arrow.trianglehead.2.clockwise.rotate.90.camera" catalog="system" width="128" height="93"/>
+        <image name="arrow.triangle.2.circlepath.camera" catalog="system" width="128" height="93"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="music.note" catalog="system" width="96" height="128"/>
         <image name="play.fill" catalog="system" width="120" height="128"/>
